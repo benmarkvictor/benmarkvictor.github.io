@@ -1,4 +1,4 @@
-## Hi there, I'm [Your Name] 👋
+## Hello, I'm [Your Name] 👋
 
 <div align="center">
   <!-- STUDENT UPDATE: You can customize the typing text in the "lines=" section of the URL below -->
@@ -14,14 +14,14 @@
 </p>
 
 ## 🚀 About Me 
-I am a data enthusiast passionate about transforming raw, complex datasets into meaningful, clear stories and actionable insights that drive strategic business decisions. 
+I am an analytical thinker who thrives on turning raw, unorganized numbers into structured solutions and compelling visual narratives. My goal is to bridge the gap between complex technical data and strategic decision-making.
 
-My primary focus revolves around engineering interactive dashboards that user groups enjoy using, automating recurring reporting tasks to optimize workflows, and using structural models to uncover key performance operational paths.
+I specialize in designing intuitive business intelligence dashboards, streamlining data workflows through automation, and uncovering the hidden patterns that help organizations optimize their day-to-day operations.
 
-When I'm not diving deep into rows of data, I enjoy exploring industry podcasts, collaborating on data challenges, and learning new tools. I live for that "aha!" moment when raw numbers pivot into clear direction.
+Outside of writing queries and building charts, I enjoy keeping up with tech trends through industry podcasts, sharing knowledge, and collaborating on analytics projects. I'm driven by those breakthrough moments when data turns into a clear roadmap for success.
 
 <!-- 🌐 STUDENT UPDATE: Replace "YOUR-GITHUB-USERNAME" with your actual GitHub username lower case -->
-### [🏆 Check Out My Full Portfolio Website](https://YOUR-GITHUB-USERNAME.github.io/)
+### [🏆 View My Interactive Portfolio Website](https://benmarkvictor.github.io/)
       
 
 ## 🛠️ Technical Skillset
