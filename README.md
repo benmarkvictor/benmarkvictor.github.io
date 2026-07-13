@@ -1,4 +1,4 @@
-## Hello, I'm [Your Name] 👋
+## Hello, I'm BEN MARK VICTOR
 
 <div align="center">
   <!-- STUDENT UPDATE: You can customize the typing text in the "lines=" section of the URL below -->
@@ -8,7 +8,7 @@
 
 <!-- 🔗 STUDENT UPDATE: Replace "YOUR-USERNAME" with your actual profile handles -->
 <p align="center">
-  <a href="https://linkedin.com/in/YOUR-USERNAME" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-Connect-0066CC?style=for-the-badge&logo=linkedin"></a>
+  <a href="https://www.linkedin.com/in/mark-ben-victor-93723b241" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-Connect-0066CC?style=for-the-badge&logo=linkedin"></a>
   <a href="https://x.com/YOUR-USERNAME" target="_blank"><img src="https://img.shields.io/badge/-Connect-black?style=for-the-badge&logo=x"></a>
   <a href="mailto:YOUR-EMAIL@EMAIL.COM"><img src="https://img.shields.io/badge/Email-Contact-green?style=for-the-badge&logo=gmail"></a>
 </p>
