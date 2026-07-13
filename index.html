@@ -1,279 +1,2230 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<!--
+  ============================================================
+  FILE: index.html
+  AUTHOR: Mark Ben Victor
+  PURPOSE: Personal Data Analyst Portfolio Website
+  GITHUB: https://github.com/benmarkvictor/benmarkvictor
+  LINKEDIN: https://www.linkedin.com/in/mark-ben-victor-93723b241
+  TWITTER/X: @BenMarkVictor1
+  
+  HOW TO DEPLOY ON GITHUB PAGES:
+  1. Go to github.com and log into your account
+  2. Create a new repository named: benmarkvictor.github.io
+  3. Upload this index.html file to that repository
+  4. Go to Settings > Pages > Source > main branch
+  5. Your site will be live at: benmarkvictor.github.io
+  ============================================================
+-->
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- UPDATE: Change the title to your own name -->
-    <title> BEN MARK VICTOR | Data Analyst Portfolio</title>
-      
-    <!--  UPDATE: Add your favicon here (Generate one at realfavicongenerator.net) -->
-    <link rel="icon" type="image/png" href="/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="/favicon-32x32.png">
-    
-    <!-- Google Fonts for Elegant Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
+  <!-- ========================================================
+    META TAGS SECTION
+    These tags configure how the browser and search engines
+    read and display your page. Always include these.
+  ======================================================== -->
+
+  <!-- Sets the character encoding to support all languages -->
+  <meta charset="UTF-8" />
+
+  <!-- Makes the page responsive on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- The page title shown in browser tab and Google search results -->
+  <title>Mark Ben Victor — Data Analyst Portfolio</title>
+
+  <!-- SEO meta description shown under your link in Google results -->
+  <meta name="description"
+    content="Mark Ben Victor — Data Analyst specializing in SQL, Power BI, Excel and Python. Portfolio of dashboards, analytics projects and data-driven insights." />
+
+  <!-- Tells search engines this is the main/canonical version of this page -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- ========================================================
+    GOOGLE FONTS IMPORT
+    We load two fonts from Google Fonts:
+    - "Inter" for clean readable body text
+    - "Space Grotesk" for bold display headings
+    Both are free and load from Google's CDN (no download needed)
+  ======================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- ========================================================
+    FONT AWESOME ICONS
+    This library gives us access to thousands of free icons
+    (social media icons, arrows, envelopes etc.)
+    We use the CDN version so nothing needs to be downloaded.
+  ======================================================== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- ========================================================
+    CSS STYLES SECTION
+    All the visual styling for the page lives here.
+    Organised into sections with clear comments.
+  ======================================================== -->
+  <style>
+
+    /* --------------------------------------------------------
+      CSS CUSTOM PROPERTIES (VARIABLES)
+      Defining our design tokens here means we only need to
+      change a colour or font in ONE place to update the
+      whole site. Think of these as global settings.
+    -------------------------------------------------------- */
+    :root {
+      /* --- Colour Palette --- */
+      --color-bg: #0a0a0f;           /* Main dark background */
+      --color-surface: #111118;      /* Slightly lighter surface for cards */
+      --color-surface-2: #16161f;    /* Card hover / elevated surface */
+      --color-border: #1e1e2e;       /* Subtle border lines */
+      --color-border-light: #2a2a3e; /* Slightly visible borders */
+
+      --color-accent: #6c63ff;       /* Primary purple accent colour */
+      --color-accent-2: #ff6584;     /* Secondary pink accent for highlights */
+      --color-accent-glow: rgba(108, 99, 255, 0.15); /* Transparent accent for glows */
+
+      --color-text-primary: #f0f0f8;   /* Main white-ish body text */
+      --color-text-secondary: #8888aa; /* Muted grey for subtitles */
+      --color-text-muted: #55556a;     /* Very muted text for labels */
+
+      /* --- Typography --- */
+      --font-display: 'Space Grotesk', sans-serif; /* Headings font */
+      --font-body: 'Inter', sans-serif;             /* Body text font */
+
+      /* --- Spacing Scale --- */
+      --space-xs: 0.5rem;   /*  8px */
+      --space-sm: 1rem;     /* 16px */
+      --space-md: 1.5rem;   /* 24px */
+      --space-lg: 2.5rem;   /* 40px */
+      --space-xl: 4rem;     /* 64px */
+      --space-2xl: 6rem;    /* 96px */
+
+      /* --- Border Radius --- */
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+
+      /* --- Transitions --- */
+      --transition: 0.25s ease;      /* Standard hover transition speed */
+      --transition-slow: 0.5s ease;  /* Slower for bigger reveals */
+    }
+
+    /* --------------------------------------------------------
+      CSS RESET
+      Removes inconsistent default browser styles so our
+      design looks the same in Chrome, Firefox, Safari, etc.
+    -------------------------------------------------------- */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box; /* Padding is included in element width */
+    }
+
+    /* --------------------------------------------------------
+      BASE HTML & BODY STYLES
+      Sets the default background, font, and text colour for
+      the entire page.
+    -------------------------------------------------------- */
+    html {
+      scroll-behavior: smooth; /* Enables smooth scrolling when clicking anchor links */
+      font-size: 16px;         /* Base font size — rem units are relative to this */
+    }
+
+    body {
+      background-color: var(--color-bg);      /* Dark background */
+      color: var(--color-text-primary);        /* Light default text */
+      font-family: var(--font-body);           /* Inter font for all text */
+      line-height: 1.7;                        /* Comfortable reading line spacing */
+      -webkit-font-smoothing: antialiased;     /* Smoother fonts on Mac/iOS */
+      overflow-x: hidden;                      /* Prevents horizontal scroll on mobile */
+    }
+
+    /* --------------------------------------------------------
+      UTILITY CLASSES
+      Small reusable helper classes used throughout the HTML
+      to avoid repeating the same CSS properties.
+    -------------------------------------------------------- */
+
+    /* Limits content width and centres it on wide screens */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Visually hidden but accessible to screen readers */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+    }
+
+    /* --------------------------------------------------------
+      SECTION LABEL (EYEBROW TEXT)
+      The small all-caps label above each section heading,
+      e.g. "About" / "Selected Work"
+    -------------------------------------------------------- */
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;  /* Wide letter spacing for small caps look */
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-sm);
+      padding: 4px 12px;
+      border: 1px solid var(--color-accent);
+      border-radius: var(--radius-full);
+    }
+
+    /* --------------------------------------------------------
+      SECTION HEADING STYLE
+      Used for all major section titles like
+      "Public Health Lens. Data Analyst Toolkit."
+    -------------------------------------------------------- */
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem); /* Scales between mobile and desktop */
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-md);
+    }
+
+    /* Italic + coloured text used for emphasis inside headings */
+    .section-heading em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+
+    /* --------------------------------------------------------
+      SECTION WRAPPER
+      Consistent vertical padding applied to every section
+      of the page to create breathing room between them.
+    -------------------------------------------------------- */
+    .section {
+      padding: var(--space-2xl) 0;
+    }
+
+    /* Alternating section background to separate content areas */
+    .section--alt {
+      background: var(--color-surface);
+    }
+
+    /* --------------------------------------------------------
+      NAVIGATION BAR
+      Fixed top navigation that stays visible as the user scrolls.
+      Contains the logo, nav links, and resume button.
+    -------------------------------------------------------- */
+    .nav {
+      position: fixed;        /* Stays at top even when scrolling */
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;           /* Sits above all other content */
+      padding: var(--space-sm) 0;
+      background: rgba(10, 10, 15, 0.85);  /* Semi-transparent dark background */
+      backdrop-filter: blur(12px);          /* Frosted glass blur effect */
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* Flexbox layout for nav — logo left, links right */
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    /* Logo / initials in top left of nav */
+    .nav__logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    /* Container for the navigation links */
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      list-style: none; /* Remove default bullet points from list */
+    }
+
+    /* Individual nav link styles */
+    .nav__links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    /* Nav link hover effect — brightens the text */
+    .nav__links a:hover {
+      color: var(--color-text-primary);
+    }
+
+    /* Resume download button in the nav — styled as a pill button */
+    .nav__cta {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-accent) !important;
+      border: 1px solid var(--color-accent);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      transition: background var(--transition), color var(--transition) !important;
+    }
+
+    /* Resume button hover — fills with accent colour */
+    .nav__cta:hover {
+      background: var(--color-accent) !important;
+      color: #fff !important;
+    }
+
+    /* --------------------------------------------------------
+      HERO SECTION
+      The first thing visitors see — name, tagline, location,
+      CTA buttons, and social media links.
+    -------------------------------------------------------- */
+    .hero {
+      min-height: 100vh;       /* Takes up the full viewport height */
+      display: flex;
+      align-items: center;     /* Vertically centres content */
+      padding-top: 80px;       /* Offset for the fixed nav bar */
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative background glow behind the hero content */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
+      pointer-events: none; /* Doesn't interfere with clicks */
+    }
+
+    /* Hero content container — positioned above the background glow */
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+    }
+
+    /* Location badge at the top of the hero */
+    .hero__location {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-md);
+      padding: 6px 14px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+    }
+
+    /* The green pulsing dot indicating "open to work" status */
+    .hero__status-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;      /* Green colour */
+      border-radius: 50%;
+      animation: pulse 2s infinite; /* Pulsing animation (defined below) */
+    }
+
+    /* Main hero headline — large and bold */
+    .hero__headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem); /* Fluid size — large on desktop */
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-md);
+    }
+
+    /* Italic + accent colour for the word "decisions" in the headline */
+    .hero__headline em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+
+    /* Subtitle paragraph under the main headline */
+    .hero__sub {
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      max-width: 560px;
+      margin-bottom: var(--space-lg);
+      line-height: 1.8;
+    }
+
+    /* Row of CTA buttons */
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;  /* Wraps to next line on mobile */
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+
+    /* --------------------------------------------------------
+      BUTTON STYLES
+      Two button variants — primary (filled) and outline.
+    -------------------------------------------------------- */
+
+    /* Primary filled button */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none;
+    }
+
+    /* Purple filled button — main CTA */
+    .btn--primary {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    /* Filled button hover — slight lift and shadow */
+    .btn--primary:hover {
+      background: #5a52e0;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(108, 99, 255, 0.35);
+    }
+
+    /* Outline / ghost button — transparent with border */
+    .btn--outline {
+      background: transparent;
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border-light);
+    }
+
+    /* Outline button hover */
+    .btn--outline:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    /* --------------------------------------------------------
+      SOCIAL LINKS ROW (Below hero buttons)
+      LinkedIn, GitHub, and X/Twitter icon links
+    -------------------------------------------------------- */
+    .hero__social {
+      display: flex;
+      gap: var(--space-sm);
+    }
+
+    /* Individual social icon link */
+    .hero__social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-full);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+
+    /* Social icon hover — accent colour border and icon */
+    .hero__social a:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      transform: translateY(-3px);
+    }
+
+    /* --------------------------------------------------------
+      STATS TICKER / SCROLLING BANNER
+      The horizontal scrolling skills bar that moves
+      automatically — "Power BI · SQL · Excel · Python…"
+    -------------------------------------------------------- */
+    .ticker {
+      overflow: hidden;   /* Hides the content outside the visible area */
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: 12px 0;
+      background: var(--color-surface);
+    }
+
+    /* The inner track that moves left continuously */
+    .ticker__track {
+      display: flex;
+      gap: var(--space-lg);
+      white-space: nowrap; /* Prevents text from wrapping */
+      animation: ticker 20s linear infinite; /* Continuous left scroll */
+    }
+
+    /* Individual skill badge inside the ticker */
+    .ticker__item {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    /* The dot separator between items in the ticker */
+    .ticker__item span {
+      color: var(--color-accent);
+      margin-right: var(--space-lg);
+    }
+
+    /* --------------------------------------------------------
+      STATS ROW
+      The four metric cards: Dashboards shipped, Records
+      analyzed, Core tools, Sector focus
+    -------------------------------------------------------- */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+
+    /* Individual stat card */
+    .stat-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-align: center;
+      transition: border-color var(--transition);
+    }
+
+    /* Stat card hover — shows accent border */
+    .stat-card:hover {
+      border-color: var(--color-accent);
+    }
+
+    /* The big number or label at the top of a stat card */
+    .stat-card__value {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      display: block;
+    }
+
+    /* The label underneath the stat number */
+    .stat-card__label {
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+      margin-top: 4px;
+    }
+
+    /* --------------------------------------------------------
+      ABOUT SECTION
+      Two-column layout with profile photo on the left
+      and bio text + credentials on the right.
+    -------------------------------------------------------- */
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr; /* Photo takes 1/3, bio takes 2/3 */
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    /* Profile photo container */
+    .about__image-wrap {
+      position: sticky; /* Stays visible as the bio text scrolls */
+      top: 100px;
+    }
+
+    /* Profile photo styling */
+    .about__image {
+      width: 100%;
+      aspect-ratio: 1;  /* Forces square shape */
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-border);
+      display: block;
+    }
+
+    /* Placeholder shown if no profile photo is added yet */
+    .about__image-placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-border);
+      background: var(--color-surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+
+    /* Bio paragraphs in the about section */
+    .about__text p {
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-md);
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+
+    /* Credentials row (degree badges) under the bio */
+    .about__credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: var(--space-md);
+    }
+
+    /* Individual credential/badge pill */
+    .credential-badge {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      padding: 6px 14px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      background: var(--color-surface);
+    }
+
+    /* --------------------------------------------------------
+      APPROACH SECTION (How I Work — 4 Steps)
+      Numbered process cards showing the 4-step methodology:
+      Understand → Model → Visualize → Deliver
+    -------------------------------------------------------- */
+    .approach__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+
+    /* Individual step card */
+    .approach-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top border accent line that reveals on hover */
+    .approach-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--color-accent);
+      transform: scaleX(0);      /* Hidden by default */
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    /* Reveal the top border on hover */
+    .approach-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    /* Step card hover lift */
+    .approach-card:hover {
+      border-color: var(--color-border-light);
+      transform: translateY(-4px);
+    }
+
+    /* Step number (01, 02, 03, 04) */
+    .approach-card__number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-border-light);
+      line-height: 1;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Step title */
+    .approach-card__title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-xs);
+    }
+
+    /* Step description text */
+    .approach-card__desc {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+
+    /* --------------------------------------------------------
+      PROJECTS SECTION
+      Filter buttons + responsive grid of project cards.
+    -------------------------------------------------------- */
+
+    /* Filter button row (All Work / Healthcare / Business) */
+    .projects__filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-lg);
+      margin-top: var(--space-md);
+    }
+
+    /* Individual filter button */
+    .filter-btn {
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: var(--font-body);
+    }
+
+    /* Active filter button (currently selected category) */
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #fff;
+    }
+
+    /* Project cards grid — responsive columns */
+    .projects__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-md);
+    }
+
+    /* Individual project card */
+    .project-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;             /* Clips the image to the card corners */
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;       /* Stack image on top, content below */
+    }
+
+    /* Project card hover effect */
+    .project-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Project card image wrapper (aspect ratio container) */
+    .project-card__image-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9; /* Widescreen image format */
+    }
+
+    /* Project thumbnail image */
+    .project-card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    /* Zoom image on card hover */
+    .project-card:hover .project-card__image {
+      transform: scale(1.05);
+    }
+
+    /* Category tag overlaid on top of the project image */
+    .project-card__tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      background: rgba(10, 10, 15, 0.8);
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+      backdrop-filter: blur(4px);
+    }
+
+    /* The text content area below the project image */
+    .project-card__body {
+      padding: var(--space-md);
+      flex: 1;           /* Stretches to fill remaining card height */
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Project title */
+    .project-card__title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-xs);
+    }
+
+    /* Project description */
+    .project-card__desc {
+      font-size: 0.87rem;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      flex: 1;             /* Pushes buttons to the bottom of the card */
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Tools used tags row */
+    .project-card__tools {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Button row at bottom of project card */
+    .project-card__actions {
+      display: flex;
+      gap: var(--space-xs);
+    }
+
+    /* Small link buttons on project cards */
+    .project-card__link {
+      flex: 1;
+      text-align: center;
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all var(--transition);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+    }
+
+    /* Primary link button (e.g. "View Dashboard") */
+    .project-card__link--primary {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #fff;
+    }
+
+    .project-card__link:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .project-card__link--primary:hover {
+      background: #5a52e0;
+      color: #fff;
+    }
+
+    /* --------------------------------------------------------
+      SKILLS SECTION
+      Three columns: Visualization / Analysis / Modeling & ETL
+    -------------------------------------------------------- */
+    .skills__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+
+    /* Individual skill category card */
+    .skill-group {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    /* Skill category icon */
+    .skill-group__icon {
+      font-size: 1.5rem;
+      color: var(--color-accent);
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Skill category heading */
+    .skill-group__title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-sm);
+    }
+
+    /* List of skills in each group */
+    .skill-group__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    /* Individual skill item */
+    .skill-group__list li {
+      font-size: 0.87rem;
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Dot bullet before each skill */
+    .skill-group__list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    /* --------------------------------------------------------
+      CONTACT SECTION
+      Contact info on the left, form on the right.
+    -------------------------------------------------------- */
+    .contact__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    /* Contact info heading */
+    .contact__info h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Contact details (email, location) */
+    .contact__details {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    /* Individual contact detail row */
+    .contact__detail {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .contact__detail:hover {
+      color: var(--color-accent);
+    }
+
+    /* Icon for each contact detail */
+    .contact__detail i {
+      color: var(--color-accent);
+      width: 16px;
+      text-align: center;
+    }
+
+    /* --------------------------------------------------------
+      CONTACT FORM
+      The email / message form on the contact section.
+    -------------------------------------------------------- */
+    .contact__form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    /* Two inputs side by side (Name + Email) */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+    }
+
+    /* Form field group (label + input) */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* Form field label */
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    /* Input and textarea shared styles */
+    .form-group input,
+    .form-group textarea {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      transition: border-color var(--transition);
+      outline: none;
+      width: 100%;
+    }
+
+    /* Input focus state — highlights with accent colour */
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-accent);
+    }
+
+    /* Textarea specific — no resize handle, set height */
+    .form-group textarea {
+      resize: none;
+      min-height: 130px;
+    }
+
+    /* --------------------------------------------------------
+      FOOTER
+      Bottom of the page — copyright and back-to-top link.
+    -------------------------------------------------------- */
+    .footer {
+      padding: var(--space-lg) 0;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    /* Footer inner content layout */
+    .footer__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    /* Copyright text */
+    .footer__copy {
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Back to top link */
+    .footer__top {
+      font-size: 0.82rem;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .footer__top:hover {
+      color: var(--color-accent);
+    }
+
+    /* --------------------------------------------------------
+      KEYFRAME ANIMATIONS
+      Defines the reusable animation sequences used on the page.
+    -------------------------------------------------------- */
+
+    /* Pulsing dot animation for the "open to work" indicator */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    /* Ticker/marquee scroll animation — slides content to the left */
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); } /* Moves half (the content is duplicated) */
+    }
+
+    /* Fade-in-up animation for elements entering the viewport */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Apply fade-up animation to hero content on page load */
+    .hero__content {
+      animation: fadeUp 0.8s ease both;
+    }
+
+    /* --------------------------------------------------------
+      RESPONSIVE STYLES
+      Adjusts the layout for tablets and mobile screens.
+      Everything from 768px wide and below gets these rules.
+    -------------------------------------------------------- */
+    @media (max-width: 768px) {
+
+      /* Stack about grid to single column on mobile */
+      .about__grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Unset sticky positioning on mobile (not needed) */
+      .about__image-wrap {
+        position: static;
+        max-width: 200px; /* Make profile photo smaller on mobile */
+      }
+
+      /* Stack contact grid to single column on mobile */
+      .contact__grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Stack form row inputs vertically on mobile */
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      /* Hide all nav links on mobile (hamburger menu would go here) */
+      .nav__links {
+        display: none;
+      }
+
+      /* Project cards fill full width on mobile */
+      .projects__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
 </head>
+
 <body>
 
-<!-- HEADER SECTION -->
-<header>
+  <!-- ============================================================
+    NAVIGATION BAR
+    Fixed at the top of the page. Contains initials logo,
+    anchor links to each section, and a resume download button.
+  ============================================================ -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="container">
-        <!--  UPDATE: Change to your name and core professional titles -->
-        <h1>BEN MARK VICTOR </h1>
-        <p>Data Analyst | Power BI Developer | Data scientist — Turning Data into Insights</p>
-        <div class="social-links">
-            <!--  UPDATE: Replace the href targets with your actual profile links -->
-            <a href="https://www.linkedin.com/in/mark-ben-victor-93723b241" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/benmarkvictor" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://x.com/BenMarkVictor1" target="_blank" title="X"><i class="fab fa-x"></i></a>
-            <!--  UPDATE: Put your resume PDF in the assets folder and update the name below -->
-            <a href="assets/Your-Name-Resume.pdf" download title="Download CV"><i class="fas fa-file-arrow-down"></i></a>
-        </div>
-    </div>
-</header>
+      <div class="nav__inner">
 
-<!-- NAVIGATION -->
-<nav>
-    <div class="container">
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <!-- Logo initials — links back to top of page -->
+        <a href="#" class="nav__logo" aria-label="Mark Ben Victor — Home">MBV</a>
+
+        <!-- Navigation links — each href="#id" scrolls to that section -->
+        <ul class="nav__links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Work</a></li>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <!--
+            RESUME LINK — Replace the href below with the URL to your
+            PDF resume once you upload it to your GitHub repo.
+            Example path: assets/MarkBenVictor_Resume.pdf
+          -->
+          <li>
+            <a href="assets/MarkBenVictor_Resume.pdf"
+               class="nav__cta"
+               target="_blank"
+               rel="noopener">Resume ↗</a>
+          </li>
         </ul>
-    </div>
-</nav>
 
-<!-- ABOUT SECTION -->
-<section id="about" class="section">
+      </div><!-- end .nav__inner -->
+    </div><!-- end .container -->
+  </nav><!-- end .nav -->
+
+
+  <!-- ============================================================
+    HERO SECTION
+    The very first section visitors see. Contains your headline,
+    subtitle, location badge, CTA buttons, and social links.
+  ============================================================ -->
+  <section class="hero" id="home" aria-label="Introduction">
     <div class="container">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <!--  UPDATE: Place your profile picture in assets/images/ and change the src below -->
-            <img src="assets/images/passport.jpeg" alt="BEN MARK VICTOR" class="profile-photo">
-            <div class="about-text">
-                <!--  UPDATE: Write your professional narrative below. Focus on background, skillset, and passions -->
-                <p>
-I am a data professional passionate about transforming complex data into meaningful insights that drive informed decision-making. With a background in <strong>Computer science</strong>, I specialize in building interactive dashboards and data-driven stories that make information accessible, actionable, and impactful. I enjoy solving business problems with data and transforming raw datasets into clear, actionable insights that support better decisions.
-</p>
+      <div class="hero__content">
 
-<p>
-My expertise includes <strong>Power BI, SQL, Python, Tableau, Excel, Power Query, DAX,</strong> and data modeling, enabling me to build interactive dashboards and analytical solutions that reveal trends, identify opportunities, and communicate insights effectively. I combine technical skills with data storytelling to create reports and visualizations that are both informative and easy for stakeholders to understand.
-</p>
-
-<p>
-I am continuously learning and expanding my skills through real-world projects across industries such as healthcare, finance, retail, sales, and operations. Every project strengthens my ability to analyze data, uncover meaningful patterns, and provide recommendations that create measurable value.
-</p>
-
-<p>
-I believe data has the power to create change when it is translated into insight, and I am committed to turning data into decisions that matter. Whether supporting business growth, improving operational efficiency, or solving complex challenges, my goal is to use analytics to deliver practical, impactful solutions.
-</p>
-            </div>
+        <!-- Location + open-to-work badge -->
+        <div class="hero__location">
+          <span class="hero__status-dot" aria-hidden="true"></span>
+          <!--
+            UPDATE: Change this text to your real location.
+          -->
+          Port Harcourt, Rivers State Nigeria &nbsp;·&nbsp; Open to Remote Roles
         </div>
-    </div>
-</section>
 
-<!-- PROJECTS SECTION -->
-<section id="projects" class="section">
-    <div class="container">
-        <h2>My Projects</h2>
-        <div class="projects-grid">
+        <!-- Main headline -->
+        <!--
+          UPDATE: Replace this tagline with YOUR professional
+          one-liner. The <em> tag makes "decisions" italic
+          and purple. Change that word to your key phrase.
+        -->
+        <h1 class="hero__headline">
+          I turn raw data into <em>decisions</em><br>people actually act on.
+        </h1>
 
-            <!-- Project Template 1: Power BI -->
-            <div class="project-card">
-                <!--  UPDATE: Add project screenshot to assets/images/ -->
-                <img src="assets/images/pizza.jpg" alt="Project One Preview">
-                <div class="project-card-content">
-                    <h3>Pizza Sales</h3>
-                    <p>Developed an interactive Pizza Sales Dashboard in <b>Microsoft Excel</b> to analyze sales performance, customer demand, and product trends. The dashboard features dynamic KPIs, interactive filters, and visual reports that help businesses identify top-selling products, optimize operations, and support data-driven decision-making.</p>
-                    <div class="project-buttons">
-                        <!--  UPDATE: Add links to your GitHub documentation and live hosted dashboard -->
-                        <a href="https://github.com/benmarkvictor/Pizza-sales" target="_blank" class="btn">Documentation</a>
-                        <a href="https://github.com/benmarkvictor/Pizza-sales/blob/main/Screenshot%202026-07-08%20175312.png" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Project Template 2: SQL & Power BI -->
-            <div class="project-card">
-                <img src="assets/images/store.png" alt="Project Two Preview">
-                <div class="project-card-content">
-                    <h3>Superstore</h3>
-                    <p>Built an interactive Superstore Sales Dashboard in <b>Tableau</b> to deliver comprehensive insights into sales performance, profitability, customer behavior, and regional operations. Through dynamic visualizations and executive-level KPIs, the dashboard identifies profit drivers, evaluates the impact of discounts, highlights top-performing customers, and uncovers opportunities for business growth, helping organizations make smarter, data-driven decisions. <b>Tools: SQL ·Tableau · Excel</b></p>
-                    <div class="project-buttons">
-                        <a href="https://github.com/benmarkvictor/superstore" target="_blank" class="btn">Documentation</a>
-                        <a href="https://github.com/benmarkvictor/superstore/blob/main/store.png" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                    </div>
-                </div>
-            </div>
+        <!-- Subtitle / specialty description -->
+        <!--
+          UPDATE: Replace with YOUR skills and specialisms.
+        -->
+        <p class="hero__sub">
+          Data analyst specializing in Power BI, SQL and Python.
+          I build dashboards that help business and operations teams
+          cut through the noise — and I've shipped projects publicly, end to end.
+        </p>
 
-            <!-- Project Template 3: Excel -->
-            <div class="project-card">
-                <img src="assets/images/project3-preview.jpg" alt="Project Three Preview">
-                <div class="project-card-content">
-                    <h3>[Project Title 3: e.g., Retail Sales Analysis]</h3>
-                    <p>Describe how you transformed raw transactional records into an interactive operational tool. Mention your methodology using key functions, formatting choices, and dynamic parameters to help users identify seasonal patterns. <b>Tools: Microsoft Excel · Pivot Tables · Slicers</b></p>
-                    <div class="project-buttons">
-                        <a href="https://github.com/YOUR-USERNAME/YOUR-REPO" target="_blank" class="btn">Documentation</a>
-                        <a href="https://github.com/YOUR-USERNAME/YOUR-REPO/blob/main/screenshot.jpg" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NOTE: You can duplicate any of the project blocks above to add more projects! -->
-
+        <!-- CTA Buttons row -->
+        <div class="hero__actions">
+          <!-- Scrolls down to the projects section -->
+          <a href="#projects" class="btn btn--primary">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i>
+            View My Work
+          </a>
+          <!--
+            UPDATE: Replace href with the direct link to your
+            CV PDF file once uploaded to GitHub.
+          -->
+          <a href="assets/MarkBenVictor_Resume.pdf"
+             class="btn btn--outline"
+             target="_blank"
+             rel="noopener">
+            <i class="fas fa-download" aria-hidden="true"></i>
+            Download CV
+          </a>
         </div>
+
+        <!-- Social media icon links -->
+        <div class="hero__social" aria-label="Social media links">
+
+          <!--
+            LinkedIn — UPDATE the href to your profile URL
+          -->
+          <a href="https://www.linkedin.com/in/mark-ben-victor-93723b241"
+             target="_blank"
+             rel="noopener"
+             aria-label="LinkedIn profile">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+
+          <!--
+            GitHub — UPDATE the href to your GitHub profile URL
+          -->
+          <a href="https://github.com/benmarkvictor"
+             target="_blank"
+             rel="noopener"
+             aria-label="GitHub profile">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+
+          <!--
+            X / Twitter — UPDATE the href to your X profile URL
+          -->
+          <a href="https://x.com/BenMarkVictor1"
+             target="_blank"
+             rel="noopener"
+             aria-label="X (Twitter) profile">
+            <i class="fab fa-x-twitter" aria-hidden="true"></i>
+          </a>
+
+        </div><!-- end .hero__social -->
+
+      </div><!-- end .hero__content -->
+    </div><!-- end .container -->
+  </section><!-- end .hero -->
+
+
+  <!-- ============================================================
+    TICKER / SCROLLING SKILLS BANNER
+    A continuously scrolling horizontal band showing your
+    key tool names. The content is duplicated so the scroll
+    loops seamlessly without gaps.
+  ============================================================ -->
+  <div class="ticker" aria-hidden="true">
+    <!-- aria-hidden="true" because this is decorative — screen readers skip it -->
+    <div class="ticker__track">
+      <!--
+        The items below repeat twice so the scroll animation
+        loops seamlessly. Do NOT remove the duplicate set.
+        UPDATE: Add or remove tools as needed.
+      -->
+      <!-- First set -->
+      <span class="ticker__item">Power BI<span>·</span></span>
+      <span class="ticker__item">SQL<span>·</span></span>
+      <span class="ticker__item">Excel<span>·</span></span>
+      <span class="ticker__item">Python<span>·</span></span>
+      <span class="ticker__item">Power Query<span>·</span></span>
+      <span class="ticker__item">DAX<span>·</span></span>
+      <span class="ticker__item">Data Modeling<span>·</span></span>
+      <span class="ticker__item">Data Visualization<span>·</span></span>
+      <!-- Second set (duplicate for seamless looping) -->
+      <span class="ticker__item">Power BI<span>·</span></span>
+      <span class="ticker__item">SQL<span>·</span></span>
+      <span class="ticker__item">Excel<span>·</span></span>
+      <span class="ticker__item">Python<span>·</span></span>
+      <span class="ticker__item">Power Query<span>·</span></span>
+      <span class="ticker__item">DAX<span>·</span></span>
+      <span class="ticker__item">Data Modeling<span>·</span></span>
+      <span class="ticker__item">Data Visualization<span>·</span></span>
     </div>
-</section>
+  </div><!-- end .ticker -->
 
-<!-- SKILLS SECTION -->
-<section id="skills" class="section">
+
+  <!-- ============================================================
+    STATS / METRICS ROW
+    Four summary cards below the hero showing key numbers.
+    UPDATE: Replace the values with your real numbers.
+  ============================================================ -->
+  <div class="section section--alt">
     <div class="container">
-        <h2>Technical Skillset</h2>
-        <div class="skills-table">
-            
-            <!-- Column 1: Data Visualization -->
-            <div class="skill-column">
-                <div class="skill-header">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Data Visualization</h3>
-                </div>
-                <ul class="skill-list">
-                    <li>Power BI</li>
-                    <li>Excel Dashboards</li>
-                    <li>Tableau</li>
-                    <li>Seaborn</li>
-                    <li>Matplotlib</li>
-                    <!--  UPDATE: Add skills if needed (e.g., Tableau) -->
-                </ul>
-            </div>
 
-            <!-- Column 2: Data Analysis -->
-            <div class="skill-column">
-                <div class="skill-header">
-                    <i class="fas fa-search-plus"></i>
-                    <h3>Data Analysis</h3>
-                </div>
-                <ul class="skill-list">
-                    <li>SQL</li>
-                    <li>Advanced Excel</li>
-                    <li>Google Sheets</li>
-                     <li>Python with Numpy and Panda</li>
-                </ul>
-            </div>
+      <!-- Portfolio snapshot label -->
+      <p class="section-label">Portfolio Snapshot</p>
+      <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-bottom: var(--space-md);">
+        Across analytics and business intelligence projects
+      </p>
 
-            <!-- Column 3: Data Modeling & ETL -->
-            <div class="skill-column">
-                <div class="skill-header">
-                    <i class="fas fa-cogs"></i>
-                    <h3>Data Modeling & ETL</h3>
-                </div>
-                <ul class="skill-list">
-                    <li>Power Query</li>
-                    <li>DAX</li>
-                     <li>Python</li>
-                </ul>
-            </div>
+      <div class="stats">
 
-            <!-- Column 4: Optional/Domain Skills -->
-            <div class="skill-column">
-                <div class="skill-header">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Domain Skills</h3>
-                </div>
-                <ul class="skill-list">
-                    <li>Data Storytelling</li>
-                    <li>Business Intelligence</li>
-                    <!--  UPDATE: Add personal domains like Graphic Design or Public Health -->
-                </ul>
-            </div>
-
+        <!-- Stat 1: Number of dashboards -->
+        <div class="stat-card">
+          <!--
+            UPDATE: Replace "0+" with the real number of
+            dashboards or projects you have completed.
+          -->
+          <span class="stat-card__value">0+</span>
+          <span class="stat-card__label">Dashboards shipped</span>
         </div>
-    </div>
-</section>
 
-<!-- CONTACT FORM SECTION -->
-<section id="contact" class="section">
+        <!-- Stat 2: Records analyzed -->
+        <div class="stat-card">
+          <!--
+            UPDATE: Replace with your real figure, e.g. "500K+"
+          -->
+          <span class="stat-card__value">0</span>
+          <span class="stat-card__label">Records analyzed</span>
+        </div>
+
+        <!-- Stat 3: Core tools -->
+        <div class="stat-card">
+          <span class="stat-card__value" style="font-size: 1rem;">Excel · Power BI · SQL</span>
+          <span class="stat-card__label">Core tools</span>
+        </div>
+
+        <!-- Stat 4: Sector focus -->
+        <div class="stat-card">
+          <!--
+            UPDATE: Change "Business-first" to your actual
+            sector focus (Healthcare, Finance, E-commerce, etc.)
+          -->
+          <span class="stat-card__value" style="font-size: 1.2rem;">Business-first</span>
+          <span class="stat-card__label">Sector focus</span>
+        </div>
+
+      </div><!-- end .stats -->
+    </div><!-- end .container -->
+  </div><!-- end stats section -->
+
+
+  <!-- ============================================================
+    ABOUT SECTION
+    Two columns: profile photo left, bio text right.
+    id="about" is the anchor the nav "About" link scrolls to.
+  ============================================================ -->
+  <section class="section" id="about" aria-label="About Mark Ben Victor">
     <div class="container">
-        <h2>Send me a message</h2>
-        
-        <!--  UPDATE: Go to formsubmit.co, register, and put your verified email address below -->
-        <form action="https://formsubmit.co/epemumark@gmail.com" method="POST" class="contact-form">
-            <p>Interested in collaborating or have questions about my work? I'd love to hear from you!</p>
 
-            <!-- Form Fields -->
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" placeholder="Your name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Your email" required>
-            </div>
-            <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" name="subject" id="subject" placeholder="Subject" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea name="message" id="message" rows="6" placeholder="Your message" required></textarea>
-            </div>
-            
-            <!-- Submit Button -->
-            <button type="submit" class="btn">Send Message</button>
+      <!-- Section label and heading -->
+      <p class="section-label">About</p>
+      <h2 class="section-heading">
+        <!--
+          UPDATE: Change this heading to reflect YOUR background.
+          The original used "Public Health Lens. Data Analyst Toolkit."
+        -->
+        Data-Driven Mindset. Analyst Toolkit.
+      </h2>
 
-        </form>
-    </div>
-</section>
+      <div class="about__grid">
 
-<!-- FOOTER -->
-<footer>
+        <!-- Left column: profile photo -->
+        <div class="about__image-wrap">
+          <!--
+            OPTION A — If you have a photo:
+            Upload your photo to: assets/images/profile.jpg
+            Then uncomment the <img> tag below and delete the placeholder div.
+
+            <img
+              src="assets/images/profile.jpg"
+              alt="Mark Ben Victor — Data Analyst"
+              class="about__image"
+              loading="lazy"
+            />
+
+            OPTION B — No photo yet (default):
+            The placeholder below shows your initials.
+            Delete it when you add a real photo.
+          -->
+          <div class="about__image-placeholder" aria-hidden="true">MBV</div>
+        </div>
+
+        <!-- Right column: bio text + credentials -->
+        <div class="about__text">
+
+          <!--
+            UPDATE: Replace all three paragraphs below with
+            YOUR own bio. Keep the same structure:
+            Paragraph 1 = What you do and your background
+            Paragraph 2 = Your technical depth / expertise
+            Paragraph 3 = Your interest / what drives you
+          -->
+          <p>
+            I'm a data professional passionate about transforming complex data into
+            meaningful insights that drive informed decision-making. I specialize in
+            building interactive dashboards and data-driven stories that make
+            information accessible, actionable, and impactful.
+          </p>
+          <p>
+            With expertise in Power BI, SQL, and data modeling, I design comprehensive
+            analytical solutions that uncover hidden patterns, reveal trends, and support
+            strategic planning across diverse sectors. My approach combines technical
+            precision with clear storytelling to ensure data is not just analyzed
+            but truly understood.
+          </p>
+          <p>
+            I'm particularly interested in leveraging data analytics to address
+            real-world business challenges, improve operational efficiency, and support
+            sustainable growth — data has the power to create change when it is
+            translated into insight.
+          </p>
+
+          <!-- Credential / experience badges -->
+          <!--
+            UPDATE: Replace these badges with YOUR own
+            qualifications, courses, and work experiences.
+          -->
+          <div class="about__credentials">
+            <span class="credential-badge">BSc [Your Degree]</span>
+            <span class="credential-badge">Data Analytics Training</span>
+            <span class="credential-badge">[Your Experience 1]</span>
+            <span class="credential-badge">[Your Experience 2]</span>
+          </div>
+
+        </div><!-- end .about__text -->
+      </div><!-- end .about__grid -->
+    </div><!-- end .container -->
+  </section><!-- end #about -->
+
+
+  <!-- ============================================================
+    APPROACH SECTION (How I Work — 4 Steps)
+    Numbered cards showing your working methodology.
+    id="approach" is the anchor the nav "Approach" link scrolls to.
+  ============================================================ -->
+  <section class="section section--alt" id="approach" aria-label="How I Work">
     <div class="container">
-        <!--  UPDATE: Change the year and update with your name -->
-        <p>&copy; 2026 BEN MARK VICTOR . All rights reserved.</p>
+
+      <p class="section-label">How I Work</p>
+      <h2 class="section-heading">From Raw Data to a Decision, in 4 Steps.</h2>
+
+      <div class="approach__grid">
+
+        <!-- Step 1 -->
+        <div class="approach-card">
+          <div class="approach-card__number" aria-hidden="true">01</div>
+          <h3 class="approach-card__title">Understand</h3>
+          <!--
+            UPDATE: Replace each step description with YOUR
+            own words describing how you work.
+          -->
+          <p class="approach-card__desc">
+            Clarify the real question behind the request — the metric
+            a stakeholder actually needs to act on.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="approach-card">
+          <div class="approach-card__number" aria-hidden="true">02</div>
+          <h3 class="approach-card__title">Model</h3>
+          <p class="approach-card__desc">
+            Clean, join, and structure the data with SQL and Power Query
+            so the model holds up under scrutiny.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="approach-card">
+          <div class="approach-card__number" aria-hidden="true">03</div>
+          <h3 class="approach-card__title">Visualize</h3>
+          <p class="approach-card__desc">
+            Build interactive Power BI or Excel dashboards, with DAX
+            measures that answer follow-up questions live.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="approach-card">
+          <div class="approach-card__number" aria-hidden="true">04</div>
+          <h3 class="approach-card__title">Deliver</h3>
+          <p class="approach-card__desc">
+            Present findings in plain language, with a clear
+            recommendation — not just a wall of charts.
+          </p>
+        </div>
+
+      </div><!-- end .approach__grid -->
+    </div><!-- end .container -->
+  </section><!-- end #approach -->
+
+
+  <!-- ============================================================
+    PROJECTS SECTION
+    Filter buttons + grid of project cards.
+    id="projects" is the anchor the nav "Work" link scrolls to.
+
+    HOW TO ADD YOUR OWN PROJECTS:
+    1. Copy one complete .project-card block below
+    2. Replace the image src, title, description, tools, and links
+    3. Change data-category to "healthcare" or "business" for filtering
+    4. Upload your dashboard screenshot to: assets/images/
+  ============================================================ -->
+  <section class="section" id="projects" aria-label="Selected Work">
+    <div class="container">
+
+      <p class="section-label">Selected Work</p>
+      <h2 class="section-heading">
+        Dashboards built to be used, <em>not just looked at.</em>
+      </h2>
+      <p style="color: var(--color-text-secondary); max-width: 560px; margin-bottom: 0;">
+        A mix of analytics and business intelligence projects,
+        each shipped with full documentation.
+      </p>
+
+      <!-- Filter Buttons -->
+      <div class="projects__filters" role="group" aria-label="Filter projects by category">
+        <!--
+          The data-filter attribute tells our JavaScript which
+          category of cards to show when this button is clicked.
+          "all" shows every card. Others match data-category on cards.
+        -->
+        <button class="filter-btn active" data-filter="all">All Work</button>
+        <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+        <button class="filter-btn" data-filter="business">Business</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects__grid" id="projectsGrid">
+
+        <!-- ================================================
+          PROJECT CARD TEMPLATE
+          Copy this entire block and fill in your own details
+          for each project you want to showcase.
+        ================================================ -->
+
+        <!--
+          PROJECT CARD 1
+          data-category="healthcare" means this card shows
+          when the "Healthcare" filter button is clicked.
+          Change to "business" for business projects.
+        -->
+        <article class="project-card" data-category="healthcare">
+
+          <!-- Project thumbnail image -->
+          <div class="project-card__image-wrap">
+            <!--
+              UPDATE: Replace src with the path to YOUR
+              project screenshot image.
+              Upload the image to: assets/images/project1.jpg
+            -->
+            <img
+              src="https://via.placeholder.com/640x360/111118/6c63ff?text=Your+Dashboard+Screenshot"
+              alt="Project 1 dashboard preview"
+              class="project-card__image"
+              loading="lazy"
+            />
+            <!-- Category tag overlaid on image -->
+            <span class="project-card__tag">Healthcare</span>
+          </div>
+
+          <!-- Card text content -->
+          <div class="project-card__body">
+            <!--
+              UPDATE: Replace with your project title
+            -->
+            <h3 class="project-card__title">Your Project Title Here</h3>
+
+            <!--
+              UPDATE: Write a 2–3 sentence description
+              of what the project does, the data used,
+              and the key insights uncovered.
+            -->
+            <p class="project-card__desc">
+              Describe what this dashboard analyzes, what dataset
+              you used, and the key business or health insight
+              it surfaces for stakeholders.
+            </p>
+
+            <!--
+              UPDATE: List the tools you used for this project
+            -->
+            <p class="project-card__tools">
+              <strong>Tools:</strong> Power BI · DAX · Power Query · SQL
+            </p>
+
+            <!-- Action buttons -->
+            <div class="project-card__actions">
+              <!--
+                UPDATE: Replace href with the URL to your
+                GitHub repository for this project's documentation.
+              -->
+              <a href="https://github.com/benmarkvictor"
+                 class="project-card__link"
+                 target="_blank"
+                 rel="noopener">
+                Documentation
+              </a>
+              <!--
+                UPDATE: Replace href with the URL to your
+                published Power BI dashboard (or image if Excel).
+              -->
+              <a href="#"
+                 class="project-card__link project-card__link--primary"
+                 target="_blank"
+                 rel="noopener">
+                View Dashboard
+              </a>
+            </div>
+
+          </div><!-- end .project-card__body -->
+        </article><!-- end project card 1 -->
+
+
+        <!-- ================================================
+          PROJECT CARD 2 — Business category
+          Add as many cards as you need by copying this block
+        ================================================ -->
+        <article class="project-card" data-category="business">
+
+          <div class="project-card__image-wrap">
+            <img
+              src="https://via.placeholder.com/640x360/111118/ff6584?text=Your+Dashboard+Screenshot"
+              alt="Project 2 dashboard preview"
+              class="project-card__image"
+              loading="lazy"
+            />
+            <span class="project-card__tag">Business</span>
+          </div>
+
+          <div class="project-card__body">
+            <h3 class="project-card__title">Your Second Project Title</h3>
+            <p class="project-card__desc">
+              Describe what this dashboard analyzes, what dataset
+              you used, and the business intelligence insight
+              it delivers for decision makers.
+            </p>
+            <p class="project-card__tools">
+              <strong>Tools:</strong> Power BI · Excel · Power Query
+            </p>
+            <div class="project-card__actions">
+              <a href="https://github.com/benmarkvictor"
+                 class="project-card__link"
+                 target="_blank" rel="noopener">Documentation</a>
+              <a href="#"
+                 class="project-card__link project-card__link--primary"
+                 target="_blank" rel="noopener">View Dashboard</a>
+            </div>
+          </div>
+
+        </article><!-- end project card 2 -->
+
+
+        <!-- ================================================
+          PROJECT CARD 3 — Healthcare category
+        ================================================ -->
+        <article class="project-card" data-category="healthcare">
+
+          <div class="project-card__image-wrap">
+            <img
+              src="https://via.placeholder.com/640x360/111118/6c63ff?text=Your+Dashboard+Screenshot"
+              alt="Project 3 dashboard preview"
+              class="project-card__image"
+              loading="lazy"
+            />
+            <span class="project-card__tag">Healthcare</span>
+          </div>
+
+          <div class="project-card__body">
+            <h3 class="project-card__title">Your Third Project Title</h3>
+            <p class="project-card__desc">
+              Describe this project. What problem did you solve?
+              What data did you analyze? What did stakeholders
+              learn from your dashboard?
+            </p>
+            <p class="project-card__tools">
+              <strong>Tools:</strong> SQL · Power BI · DAX
+            </p>
+            <div class="project-card__actions">
+              <a href="https://github.com/benmarkvictor"
+                 class="project-card__link"
+                 target="_blank" rel="noopener">Documentation</a>
+              <a href="#"
+                 class="project-card__link project-card__link--primary"
+                 target="_blank" rel="noopener">View Dashboard</a>
+            </div>
+          </div>
+
+        </article><!-- end project card 3 -->
+
+        <!--
+          =====================================================
+          ADD MORE PROJECT CARDS HERE
+          Copy any of the blocks above, change data-category
+          to "healthcare" or "business", and fill in your info.
+          =====================================================
+        -->
+
+      </div><!-- end #projectsGrid -->
+    </div><!-- end .container -->
+  </section><!-- end #projects -->
+
+
+  <!-- ============================================================
+    SKILLS SECTION
+    Three skill group cards in a responsive grid.
+    id="skills" is the anchor the nav "Skills" link scrolls to.
+
+    UPDATE: Add or remove skills to match your actual toolkit.
+  ============================================================ -->
+  <section class="section section--alt" id="skills" aria-label="Technical Skills">
+    <div class="container">
+
+      <p class="section-label">Toolkit</p>
+      <h2 class="section-heading">Technical Skillset</h2>
+
+      <div class="skills__grid">
+
+        <!-- Skill Group 1: Data Visualization -->
+        <div class="skill-group">
+          <div class="skill-group__icon">
+            <i class="fas fa-chart-pie" aria-hidden="true"></i>
+          </div>
+          <h3 class="skill-group__title">Data Visualization</h3>
+          <ul class="skill-group__list">
+            <li>Power BI</li>
+            <li>Excel Dashboards</li>
+            <!-- UPDATE: Add more visualization tools you use -->
+          </ul>
+        </div>
+
+        <!-- Skill Group 2: Data Analysis -->
+        <div class="skill-group">
+          <div class="skill-group__icon">
+            <i class="fas fa-database" aria-hidden="true"></i>
+          </div>
+          <h3 class="skill-group__title">Data Analysis</h3>
+          <ul class="skill-group__list">
+            <li>SQL</li>
+            <li>Advanced Excel</li>
+            <li>Google Sheets</li>
+            <li>Python</li>
+            <!-- UPDATE: Add more analysis tools / languages -->
+          </ul>
+        </div>
+
+        <!-- Skill Group 3: Modeling & ETL -->
+        <div class="skill-group">
+          <div class="skill-group__icon">
+            <i class="fas fa-code-branch" aria-hidden="true"></i>
+          </div>
+          <h3 class="skill-group__title">Modeling &amp; ETL</h3>
+          <ul class="skill-group__list">
+            <li>Power Query</li>
+            <li>DAX</li>
+            <li>Data Modeling</li>
+            <!-- UPDATE: Add more modeling / ETL tools -->
+          </ul>
+        </div>
+
+      </div><!-- end .skills__grid -->
+    </div><!-- end .container -->
+  </section><!-- end #skills -->
+
+
+  <!-- ============================================================
+    CONTACT SECTION
+    Contact info on the left + contact form on the right.
+    id="contact" is the anchor the nav "Contact" link scrolls to.
+
+    IMPORTANT: The form below does NOT send emails by itself.
+    To make it functional, use one of these free services:
+    - Formspree: formspree.io (replace action URL below)
+    - Web3Forms: web3forms.com
+    - EmailJS: emailjs.com (JavaScript-based, no backend needed)
+  ============================================================ -->
+  <section class="section" id="contact" aria-label="Contact">
+    <div class="container">
+
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-heading">Let's talk about your data.</h2>
+
+      <div class="contact__grid">
+
+        <!-- Left: Contact info -->
+        <div class="contact__info">
+          <h3>Open to Remote Roles &amp; Freelance Work</h3>
+          <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-top: var(--space-xs);">
+            Interested in collaborating, hiring, or have questions about
+            a project? I usually reply within a day.
+          </p>
+
+          <div class="contact__details">
+
+            <!--
+              UPDATE: Replace with YOUR email address
+            -->
+            <a href="mailto:yourname@gmail.com" class="contact__detail">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              yourname@gmail.com
+            </a>
+
+            <!--
+              UPDATE: Replace with YOUR city / location
+            -->
+            <span class="contact__detail">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              Port Harcourt, Rivers State, Nigeria
+            </span>
+
+            <!--
+              LinkedIn link — UPDATE with your profile URL
+            -->
+            <a href="https://www.linkedin.com/in/mark-ben-victor-93723b241"
+               class="contact__detail"
+               target="_blank"
+               rel="noopener">
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
+              linkedin.com/in/mark-ben-victor
+            </a>
+
+          </div><!-- end .contact__details -->
+        </div><!-- end .contact__info -->
+
+
+        <!-- Right: Contact form -->
+        <!--
+          FORM SETUP WITH FORMSPREE (recommended):
+          1. Go to formspree.io and sign up for free
+          2. Create a new form — you'll get a unique endpoint URL
+          3. Replace "YOUR_FORMSPREE_ID" in the action below
+             e.g. action="https://formspree.io/f/xrgvwbkd"
+          4. Done — form submissions go straight to your email
+        -->
+        <form class="contact__form"
+              action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+              method="POST"
+              aria-label="Contact form">
+
+          <!-- Name + Email row (side by side on desktop) -->
+          <div class="form-row">
+
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input
+                type="text"
+                id="contact-name"
+                name="name"
+                placeholder="Your full name"
+                required
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                placeholder="your@email.com"
+                required
+                autocomplete="email"
+              />
+            </div>
+
+          </div><!-- end .form-row -->
+
+          <!-- Subject field -->
+          <div class="form-group">
+            <label for="contact-subject">Subject</label>
+            <input
+              type="text"
+              id="contact-subject"
+              name="subject"
+              placeholder="What's this about?"
+              required
+            />
+          </div>
+
+          <!-- Message textarea -->
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              placeholder="Tell me about your project or opportunity..."
+              required
+            ></textarea>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn--primary" style="align-self: flex-start;">
+            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+            Send Message
+          </button>
+
+        </form><!-- end .contact__form -->
+
+      </div><!-- end .contact__grid -->
+    </div><!-- end .container -->
+  </section><!-- end #contact -->
+
+
+  <!-- ============================================================
+    FOOTER
+    Copyright notice and back-to-top link.
+    UPDATE: Change the year and your name.
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+
+        <!-- Copyright text -->
+        <p class="footer__copy">
+          &copy; 2026 Mark Ben Victor. All rights reserved.
+        </p>
+
+        <!-- Back to top link — scrolls to the hero section -->
+        <a href="#home" class="footer__top">Back to top ↑</a>
+
+      </div>
     </div>
-</footer>
+  </footer><!-- end .footer -->
 
-<script src="assets/js/main.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <!-- ============================================================
+    JAVASCRIPT SECTION
+    All interactivity for the page lives here.
+    Three functions: filter buttons, counter animation, mobile nav.
+  ============================================================ -->
+  <script>
 
-<script>
+    /*
+     * ============================================================
+     * FUNCTION 1: PROJECT FILTER SYSTEM
+     * ============================================================
+     * Purpose: When a filter button is clicked (All / Healthcare /
+     *          Business), show only the matching project cards
+     *          and hide all others.
+     *
+     * How it works:
+     * 1. Get all filter buttons and all project cards
+     * 2. Add a click listener to every button
+     * 3. When a button is clicked:
+     *    a. Remove "active" class from all buttons
+     *    b. Add "active" class to the clicked button
+     *    c. Loop through every card:
+     *       - If filter is "all" OR card's data-category matches
+     *         the filter → show the card (remove "hidden" style)
+     *       - Otherwise → hide the card
+     */
+    (function initProjectFilter() {
 
-var typed = new Typed(".typing",{
+      /* Select all filter buttons and all project card articles */
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
 
-strings:[
+      /* Add click event listener to each filter button */
+      filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
 
-"Data Analyst",
+          /* --- Step A: Remove active styling from all buttons --- */
+          filterBtns.forEach(function(b) {
+            b.classList.remove('active');
+          });
 
-"Power BI Developer",
+          /* --- Step B: Mark this button as active --- */
+          btn.classList.add('active');
 
-"SQL Developer",
+          /* --- Step C: Read which filter category was clicked --- */
+          const filter = btn.getAttribute('data-filter');
+          /*
+           * data-filter is a custom HTML attribute we set on each button:
+           * "all" = show everything
+           * "healthcare" = show only cards with data-category="healthcare"
+           * "business" = show only cards with data-category="business"
+           */
 
-"Tableau Developer",
+          /* --- Step D: Loop through each card and show/hide it --- */
+          projectCards.forEach(function(card) {
+            const category = card.getAttribute('data-category');
+            /*
+             * data-category is set on each .project-card element.
+             * It tells us which filter group the card belongs to.
+             */
 
-"Business Intelligence Analyst"
+            if (filter === 'all' || category === filter) {
+              /* Show the card — remove the inline hidden styles */
+              card.style.display = '';
+              card.style.opacity = '1';
+              card.style.transform = 'scale(1)';
+            } else {
+              /* Hide the card */
+              card.style.display = 'none';
+            }
+          });
 
-],
+        }); /* end click listener */
+      }); /* end filterBtns.forEach */
 
-typeSpeed:70,
+    })(); /* Immediately invoked to run on page load */
 
-backSpeed:50,
 
-loop:true
+    /*
+     * ============================================================
+     * FUNCTION 2: ANIMATED NUMBER COUNTER
+     * ============================================================
+     * Purpose: When the stats section scrolls into view, animate
+     *          the numbers counting up from 0 to their final value.
+     *          (e.g. 0 → 15 for "dashboards shipped")
+     *
+     * How it works:
+     * 1. Use IntersectionObserver to detect when the stats
+     *    section enters the viewport (becomes visible)
+     * 2. When it enters: find all .stat-card__value elements
+     *    that contain a number
+     * 3. For each, animate from 0 to the target number over 2 seconds
+     * 4. Stop observing after the animation runs once
+     */
+    (function initCounterAnimation() {
 
-});
+      /*
+       * IntersectionObserver fires a callback when the observed
+       * element enters or exits the viewport.
+       */
+      const observer = new IntersectionObserver(function(entries) {
 
-</script>
+        entries.forEach(function(entry) {
+
+          /* Only run when the element is actually visible */
+          if (!entry.isIntersecting) return;
+
+          /* Find all stat value elements inside the visible section */
+          const statValues = entry.target.querySelectorAll('.stat-card__value');
+
+          statValues.forEach(function(el) {
+
+            /* Read the raw text content, e.g. "15+" or "500K+" */
+            const rawText = el.textContent.trim();
+
+            /* Extract only the numeric portion using regex */
+            const numMatch = rawText.match(/\d+/);
+            if (!numMatch) return; /* Skip if no number found (e.g. "Excel · Power BI") */
+
+            const targetNum = parseInt(numMatch[0], 10); /* The final number to count to */
+            const suffix    = rawText.replace(/[\d,]/g, '');  /* Any text after the number e.g. "+" */
+            const duration  = 2000; /* Animation duration in milliseconds */
+            const startTime = performance.now(); /* Record when animation began */
+            let   animFrame;
+
+            /*
+             * Recursive animation function using requestAnimationFrame
+             * for smooth 60fps animation tied to the browser's repaint cycle.
+             */
+            function countUp(timestamp) {
+              const elapsed  = timestamp - startTime; /* How many ms have passed */
+              const progress = Math.min(elapsed / duration, 1); /* 0.0 → 1.0 */
+
+              /*
+               * Ease-out formula: progress slows down as it approaches 1
+               * Makes the number slow down near the end for a natural feel.
+               */
+              const eased      = 1 - Math.pow(1 - progress, 3);
+              const currentNum = Math.round(eased * targetNum);
+
+              /* Update the displayed number */
+              el.textContent = currentNum + suffix;
+
+              /* Continue animating until we reach 1.0 (100% complete) */
+              if (progress < 1) {
+                animFrame = requestAnimationFrame(countUp);
+              }
+            }
+
+            /* Start the animation */
+            animFrame = requestAnimationFrame(countUp);
+
+          }); /* end statValues.forEach */
+
+          /* Stop watching this element — animation should only run once */
+          observer.unobserve(entry.target);
+
+        }); /* end entries.forEach */
+
+      }, {
+        threshold: 0.3 /* Trigger when 30% of the element is visible */
+      });
+
+      /* Tell the observer to watch the stats section */
+      const statsSection = document.querySelector('.stats');
+      if (statsSection) {
+        observer.observe(statsSection);
+      }
+
+    })(); /* Immediately invoked to run on page load */
+
+
+    /*
+     * ============================================================
+     * FUNCTION 3: NAVIGATION SCROLL HIGHLIGHT
+     * ============================================================
+     * Purpose: As the user scrolls down the page, automatically
+     *          highlight the nav link that corresponds to the
+     *          section currently in view.
+     *
+     * How it works:
+     * 1. Get all sections that have an id attribute
+     * 2. Get all nav links
+     * 3. On scroll: check which section is currently at
+     *    the top of the viewport
+     * 4. Add an "active" style to the matching nav link
+     */
+    (function initScrollHighlight() {
+
+      /* All page sections with an id we can navigate to */
+      const sections = document.querySelectorAll('section[id]');
+
+      /* All anchor tags inside the nav list */
+      const navLinks = document.querySelectorAll('.nav__links a');
+
+      /* Run on every scroll event */
+      window.addEventListener('scroll', function() {
+
+        /* Current vertical scroll position + small offset */
+        const scrollY = window.scrollY + 100;
+
+        /* Loop through each section to find the active one */
+        sections.forEach(function(section) {
+
+          const sectionTop    = section.offsetTop;    /* Distance from top of page */
+          const sectionHeight = section.offsetHeight; /* Height of the section */
+          const sectionId     = section.getAttribute('id');
+
+          /*
+           * If the scroll position is within this section's
+           * top and bottom bounds, it's the active section.
+           */
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+
+            /* Remove active style from all nav links */
+            navLinks.forEach(function(link) {
+              link.style.color = '';
+            });
+
+            /* Find the nav link that points to this section */
+            const activeLink = document.querySelector(
+              '.nav__links a[href="#' + sectionId + '"]'
+            );
+
+            /* Highlight the matching nav link */
+            if (activeLink) {
+              activeLink.style.color = 'var(--color-accent)';
+            }
+
+          }
+        }); /* end sections.forEach */
+
+      }); /* end scroll event listener */
+
+    })(); /* Immediately invoked to run on page load */
+
+
+    /*
+     * ============================================================
+     * FUNCTION 4: CONTACT FORM SUBMISSION HANDLER
+     * ============================================================
+     * Purpose: Prevent the default browser form redirect,
+     *          show the user a success message after they
+     *          submit the contact form.
+     *
+     * Note: For this to actually send emails, you must:
+     *       1. Sign up at formspree.io
+     *       2. Replace "YOUR_FORMSPREE_ID" in the form action above
+     */
+    (function initContactForm() {
+
+      const form = document.querySelector('.contact__form');
+
+      if (!form) return; /* Exit if form not found on the page */
+
+      form.addEventListener('submit', function(event) {
+
+        /* Let Formspree handle the actual submission */
+        /* We just change the button text to show feedback */
+
+        const submitBtn = form.querySelector('[type="submit"]');
+
+        if (submitBtn) {
+          submitBtn.textContent = 'Sending…';
+          submitBtn.disabled = true; /* Prevent double-submission */
+
+          /*
+           * Re-enable the button after 3 seconds in case of error
+           * so the user can try again.
+           */
+          setTimeout(function() {
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            submitBtn.disabled = false;
+          }, 3000);
+        }
+
+      }); /* end submit listener */
+
+    })(); /* Immediately invoked to run on page load */
+
+  </script>
 
 </body>
 </html>
