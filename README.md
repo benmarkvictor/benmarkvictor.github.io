@@ -9,8 +9,8 @@
 <!-- 🔗 STUDENT UPDATE: Replace "YOUR-USERNAME" with your actual profile handles -->
 <p align="center">
   <a href="https://www.linkedin.com/in/mark-ben-victor-93723b241" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-Connect-0066CC?style=for-the-badge&logo=linkedin"></a>
-  <a href="https://x.com/YOUR-USERNAME" target="_blank"><img src="https://img.shields.io/badge/-Connect-black?style=for-the-badge&logo=x"></a>
-  <a href="mailto:YOUR-EMAIL@EMAIL.COM"><img src="https://img.shields.io/badge/Email-Contact-green?style=for-the-badge&logo=gmail"></a>
+  <a href="https://x.com/BenMarkVictor1" target="_blank"><img src="https://img.shields.io/badge/-Connect-black?style=for-the-badge&logo=x"></a>
+  <a href="epemumark@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-green?style=for-the-badge&logo=gmail"></a>
 </p>
 
 ## 🚀 About Me 
@@ -35,7 +35,7 @@ Outside of writing queries and building charts, I enjoy keeping up with tech tre
   <img src="https://img.shields.io/badge/Excel-Advanced-217346?style=flat&logo=microsoft-excel&logoColor=white" alt="Excel Skill Badge">
 </p>
 
-#### Business Intelligence & Analytics
+#### Business Intelligence & Financial Analyst
 <p>
   <img src="https://img.shields.io/badge/KPI%20Development-Skills-96CEB4?style=flat" alt="KPI Development Skill Badge">
   <img src="https://img.shields.io/badge/Data%20Modeling-Skills-0066CC?style=flat" alt="Data Modeling Skill Badge">
