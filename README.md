@@ -38,6 +38,6 @@ Outside of writing queries and building charts, I enjoy keeping up with tech tre
 #### Business Intelligence & Financial Analyst
 <p>
   <img src="https://img.shields.io/badge/KPI%20Development-Skills-96CEB4?style=flat" alt="KPI Development Skill Badge">
-   <img src="https://img.shields.io/badge/Python%20DAta Advanced-Skills-96CEB4?style=flat" alt="Python Advanced Skill Badge">
+   <img src="https://img.shields.io/badge/Python%20 Advanced-Skills-88B2CC?style=flat" alt="Python Advanced Skill Badge">
   <img src="https://img.shields.io/badge/Data%20Modeling-Skills-0066CC?style=flat" alt="Data Modeling Skill Badge">
 </p>
