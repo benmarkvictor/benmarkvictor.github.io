@@ -3,7 +3,7 @@
 <div align="center">
   <!-- STUDENT UPDATE: You can customize the typing text in the "lines=" section of the URL below -->
   <!-- Split phrases with a semicolon (;). For spaces, use a plus (+) sign -->
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=0A2540&center=true&vCenter=true&width=435&lines=Data+Analyst;Power+BI+Developer;SQL+Developer;Data+Storyteller;" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=0A2540&center=true&vCenter=true&width=435&lines=Data+Analyst;Python;Power+BI+Developer;SQL+Developer;Data+Storyteller;" alt="Typing SVG" />
 </div>
 
 <!-- 🔗 STUDENT UPDATE: Replace "YOUR-USERNAME" with your actual profile handles -->
@@ -38,5 +38,6 @@ Outside of writing queries and building charts, I enjoy keeping up with tech tre
 #### Business Intelligence & Financial Analyst
 <p>
   <img src="https://img.shields.io/badge/KPI%20Development-Skills-96CEB4?style=flat" alt="KPI Development Skill Badge">
+   <img src="https://img.shields.io/badge/Python%20DAta Advanced-Skills-96CEB4?style=flat" alt="Python Advanced Skill Badge">
   <img src="https://img.shields.io/badge/Data%20Modeling-Skills-0066CC?style=flat" alt="Data Modeling Skill Badge">
 </p>
