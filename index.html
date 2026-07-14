@@ -1126,6 +1126,228 @@
         grid-template-columns: 1fr;
       }
     }
+    /* ============================================================
+  STATS SECTION — ANIMATED BACKGROUND STYLES
+  All styles for the dark animated stats section.
+  Each rule is explained with a comment above it.
+============================================================ */
+
+/* Outer wrapper — dark background, clips all animation layers */
+.stats-section-wrapper {
+  position: relative;       /* Needed so absolute children position inside it */
+  overflow: hidden;          /* Clips orbs and animations at the edges */
+  background: #0d0d1a;       /* Very dark navy — distinct from the rest of the page */
+  padding: var(--space-2xl) 0;
+}
+
+/* ---- BACKGROUND LAYER: Animated grid lines ---- */
+/* Moving perspective grid that slowly scrolls diagonally */
+.grid-lines {
+  position: absolute;
+  inset: 0;                  /* Fills the entire wrapper */
+  background-image:
+    linear-gradient(rgba(108,99,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108,99,255,0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  /* Scrolls diagonally — shifts 40px (one grid cell) over 20 seconds */
+  animation: gridPan 20s linear infinite;
+  pointer-events: none;      /* Cannot be clicked — purely decorative */
+}
+
+/* Keyframe: moves the grid pattern diagonally by one cell */
+@keyframes gridPan {
+  0%   { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+/* ---- BACKGROUND LAYER: Star particles canvas ---- */
+/* The canvas is filled with twinkling star dots by JavaScript */
+.stars-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ---- BACKGROUND LAYER: Floating colour orbs ---- */
+/* Large blurred circles that drift slowly — gives depth effect */
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);        /* Heavy blur = soft glow cloud effect */
+  animation: orbFloat 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Purple orb — top left corner */
+.orb-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(108,99,255,0.18);
+  top: -80px;
+  left: -80px;
+  animation-delay: 0s;
+}
+
+/* Pink/red orb — bottom right corner */
+.orb-2 {
+  width: 250px;
+  height: 250px;
+  background: rgba(255,101,132,0.13);
+  bottom: -60px;
+  right: -60px;
+  animation-delay: -3s;     /* Offset so orbs drift out of sync */
+}
+
+/* Teal orb — centre */
+.orb-3 {
+  width: 180px;
+  height: 180px;
+  background: rgba(29,158,117,0.10);
+  top: 40%;
+  left: 50%;
+  animation-delay: -5s;
+}
+
+/* Keyframe: orbs drift in a triangle path and breathe in/out */
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(24px, -24px) scale(1.06); }
+  66%       { transform: translate(-18px, 18px) scale(0.96); }
+}
+
+/* ---- BACKGROUND LAYER: Scanning beam ---- */
+/* A horizontal line of light that sweeps top to bottom, looping */
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(108,99,255,0.5),
+    transparent
+  );
+  animation: scanBeam 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Keyframe: scan beam moves from top to bottom over 6 seconds */
+@keyframes scanBeam {
+  0%   { top: 0%;   opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ---- CONTENT: Inner content sits above all background layers ---- */
+.stats-inner {
+  position: relative;
+  z-index: 2;               /* Ensures text is above all background effects */
+}
+
+/* Subtitle text under the section label in the stats section */
+.stats-subtitle {
+  color: #6666aa;
+  font-size: 0.85rem;
+  margin-bottom: var(--space-md);
+}
+
+/* Override the default stat card for the dark section */
+.stats-section-wrapper .stat-card {
+  background: rgba(255,255,255,0.03);   /* Very subtle white tint */
+  border: 1px solid rgba(108,99,255,0.15);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer overlay inside each card — reveals on hover */
+.stats-section-wrapper .stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(108,99,255,0.08) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Reveal the inner shimmer when hovering a card */
+.stats-section-wrapper .stat-card:hover::before {
+  opacity: 1;
+}
+
+/* Lift + glow effect on card hover */
+.stats-section-wrapper .stat-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(108,99,255,0.45);
+  box-shadow: 0 12px 30px rgba(108,99,255,0.15);
+}
+
+/* Coloured bottom border strip on each card (unique per card) */
+.stats-section-wrapper .stat-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+/* Purple bottom strip — Dashboards card */
+.stat-card--purple::after {
+  background: linear-gradient(90deg, #6c63ff, #a89fff);
+}
+
+/* Pink bottom strip — Records card */
+.stat-card--pink::after {
+  background: linear-gradient(90deg, #ff6584, #ffb3c1);
+}
+
+/* Teal bottom strip — Tools card */
+.stat-card--teal::after {
+  background: linear-gradient(90deg, #1d9e75, #5dcaa5);
+}
+
+/* Amber bottom strip — Sector card */
+.stat-card--amber::after {
+  background: linear-gradient(90deg, #ef9f27, #fac775);
+}
+
+/* Stat value colour per card */
+.stat-card--purple .stat-card__value { color: #a89fff; }
+.stat-card--pink   .stat-card__value { color: #ff8fa3; }
+.stat-card--teal   .stat-card__value { color: #5dcaa5; }
+.stat-card--amber  .stat-card__value { color: #fac775; }
+
+/* Smaller value font for the tools text (too long for large font) */
+.stat-card__value--small {
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Medium value font for "Business-first" */
+.stat-card__value--medium {
+  font-size: 1.15rem !important;
+}
+
+/* Label text colour override for dark background */
+.stats-section-wrapper .stat-card__label {
+  color: #6666aa;
+}
+
+/* Section label override for dark background */
+.stats-section-wrapper .section-label {
+  color: #a89fff;
+  border-color: rgba(108,99,255,0.4);
+  background: rgba(108,99,255,0.08);
+}
 
   </style>
 </head>
@@ -1305,60 +1527,90 @@
   </div><!-- end .ticker -->
 
 
-  <!-- ============================================================
-    STATS / METRICS ROW
-    Four summary cards below the hero showing key numbers.
-    UPDATE: Replace the values with your real numbers.
-  ============================================================ -->
-  <div class="section section--alt">
-    <div class="container">
+<!-- ============================================================
+  STATS SECTION — Animated Dark Background with Effects
+  Features:
+  - Animated star particles (canvas)
+  - Floating colour orbs (CSS keyframes)
+  - Moving grid lines background
+  - Scanning light beam
+  - Number counter animation on load
+  - Hover lift + glow on each card
+  - Each card has a unique accent colour bottom border
+============================================================ -->
+<div class="stats-section-wrapper">
 
-      <!-- Portfolio snapshot label -->
-      <p class="section-label">Portfolio Overview</p>
-      <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-bottom: var(--space-md);">
-        Delivering analytics solutions across Finance, Sales, and Business Intelligence.
-      </p>
+  <!-- LAYER 1: Animated star particles drawn on canvas -->
+  <canvas id="starsCanvas" class="stars-canvas"></canvas>
 
-      <div class="stats">
+  <!-- LAYER 2: Moving grid lines overlay -->
+  <div class="grid-lines" aria-hidden="true"></div>
 
-        <!-- Stat 1: Number of dashboards -->
-        <div class="stat-card">
-          <!--
-            UPDATE: Replace "0+" with the real number of
-            dashboards or projects you have completed.
-          -->
-          <span class="stat-card__value">2+</span>
-          <span class="stat-card__label">Dashboards shipped</span>
-        </div>
+  <!-- LAYER 3: Floating colour orbs (purple, pink, teal) -->
+  <div class="floating-orb orb-1" aria-hidden="true"></div>
+  <div class="floating-orb orb-2" aria-hidden="true"></div>
+  <div class="floating-orb orb-3" aria-hidden="true"></div>
 
-        <!-- Stat 2: Records analyzed -->
-        <div class="stat-card">
-          <!--
-            UPDATE: Replace with your real figure, e.g. "500K+"
-          -->
-          <span class="stat-card__value">500k+</span>
-          <span class="stat-card__label">Records analyzed</span>
-        </div>
+  <!-- LAYER 4: Scanning light beam moving top to bottom -->
+  <div class="scan-line" aria-hidden="true"></div>
 
-        <!-- Stat 3: Core tools -->
-        <div class="stat-card">
-          <span class="stat-card__value" style="font-size: 1rem;">Excel · Power BI · SQL. Tableau</span>
-          <span class="stat-card__label">Core tools</span>
-        </div>
+  <!-- MAIN CONTENT — sits above all background layers -->
+  <div class="stats-inner container">
 
-        <!-- Stat 4: Sector focus -->
-        <div class="stat-card">
-          <!--
-            UPDATE: Change "Business-first" to your actual
-            sector focus (Healthcare, Finance, E-commerce, etc.)
-          -->
-          <span class="stat-card__value" style="font-size: 1.2rem;">Business-first</span>
-          <span class="stat-card__label">Sector focus</span>
-        </div>
+    <!-- Portfolio snapshot label -->
+    <p class="section-label">Portfolio Overview</p>
+    <p class="stats-subtitle">
+      Delivering analytics solutions across Finance, Sales, and Business Intelligence.
+    </p>
 
-      </div><!-- end .stats -->
-    </div><!-- end .container -->
-  </div><!-- end stats section -->
+    <div class="stats">
+
+      <!-- Stat 1: Dashboards — counter animates 0 → 2 on page load -->
+      <div class="stat-card stat-card--purple">
+        <!--
+          The id="stat-dashboards" is used by the JavaScript
+          counter animation to find and update this number.
+          Change the data-target to your real number.
+        -->
+        <span class="stat-card__value"
+              id="stat-dashboards"
+              data-target="2"
+              data-suffix="+">0+</span>
+        <span class="stat-card__label">Dashboards shipped</span>
+      </div>
+
+      <!-- Stat 2: Records — counter animates 0 → 500 on page load -->
+      <div class="stat-card stat-card--pink">
+        <!--
+          data-target="500" and data-suffix="k+"
+          means it will count up to "500k+"
+        -->
+        <span class="stat-card__value"
+              id="stat-records"
+              data-target="500"
+              data-suffix="k+">0</span>
+        <span class="stat-card__label">Records analyzed</span>
+      </div>
+
+      <!-- Stat 3: Tools — no counter animation (text not a number) -->
+      <div class="stat-card stat-card--teal">
+        <span class="stat-card__value stat-card__value--small">
+          Excel · Power BI · SQL · Tableau
+        </span>
+        <span class="stat-card__label">Core tools</span>
+      </div>
+
+      <!-- Stat 4: Sector focus — no counter animation (text) -->
+      <div class="stat-card stat-card--amber">
+        <span class="stat-card__value stat-card__value--medium">
+          Business-first
+        </span>
+        <span class="stat-card__label">Sector focus</span>
+      </div>
+
+    </div><!-- end .stats -->
+  </div><!-- end .stats-inner -->
+</div><!-- end .stats-section-wrapper -->
 
 
   <!-- ============================================================
@@ -2225,6 +2477,158 @@
       }); /* end submit listener */
 
     })(); /* Immediately invoked to run on page load */
+    /*
+ * ============================================================
+ * ANIMATED STATS SECTION — JavaScript
+ * ============================================================
+ * Three functions working together:
+ * 1. drawStars()     — renders twinkling star particles on canvas
+ * 2. animateCount()  — counts numbers up from 0 to target value
+ * 3. init()          — sets up canvas size and starts everything
+ * ============================================================
+ */
+(function initAnimatedStats() {
+
+  /* ---- Get the canvas element and its drawing context ---- */
+  const canvas = document.getElementById('starsCanvas');
+  if (!canvas) return; /* Exit safely if canvas not found */
+
+  const ctx = canvas.getContext('2d');
+  const wrapper = canvas.parentElement; /* The dark stats wrapper div */
+
+  /*
+   * FUNCTION: resizeCanvas
+   * Matches the canvas pixel dimensions to the wrapper's
+   * actual size. Called on load and whenever window resizes.
+   */
+  function resizeCanvas() {
+    canvas.width  = wrapper.offsetWidth;
+    canvas.height = wrapper.offsetHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  /*
+   * GENERATE STAR DATA
+   * Creates 90 star objects with random positions,
+   * sizes, and animation phase offsets so they twinkle
+   * independently of each other.
+   */
+  const stars = Array.from({ length: 90 }, function() {
+    return {
+      x:     Math.random(),              /* Position as 0–1 fraction of width */
+      y:     Math.random(),              /* Position as 0–1 fraction of height */
+      r:     Math.random() * 1.2 + 0.3, /* Radius 0.3px – 1.5px */
+      speed: Math.random() * 0.008 + 0.003, /* Twinkle speed */
+      phase: Math.random() * Math.PI * 2    /* Starting phase (offset) */
+    };
+  });
+
+  /*
+   * FUNCTION: drawStars (animation loop)
+   * Clears the canvas and redraws all stars every frame.
+   * Each star's opacity oscillates using a sine wave —
+   * the speed and phase differ per star for async twinkling.
+   *
+   * @param {number} timestamp — provided by requestAnimationFrame
+   */
+  function drawStars(timestamp) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    stars.forEach(function(star) {
+      /* Oscillate between 0.15 and 0.7 opacity using sine wave */
+      const alpha = 0.15 + 0.55 * Math.abs(
+        Math.sin(timestamp * 0.001 * star.speed * 10 + star.phase)
+      );
+
+      ctx.beginPath();
+      ctx.arc(
+        star.x * canvas.width,   /* Actual pixel X */
+        star.y * canvas.height,  /* Actual pixel Y */
+        star.r,
+        0, Math.PI * 2
+      );
+      ctx.fillStyle = `rgba(168, 159, 255, ${alpha})`;
+      ctx.fill();
+    });
+
+    /* Request the next frame — creates the animation loop */
+    requestAnimationFrame(drawStars);
+  }
+
+  /* Start the star animation loop */
+  requestAnimationFrame(drawStars);
+
+  /*
+   * FUNCTION: animateCount
+   * Smoothly counts a number element from 0 to its target value.
+   * Uses an ease-out cubic curve so the number slows near the end.
+   *
+   * @param {HTMLElement} el       — the element to update
+   * @param {number}      target   — the final number to reach
+   * @param {string}      suffix   — text appended after number e.g. "k+"
+   * @param {number}      duration — animation length in milliseconds
+   */
+  function animateCount(el, target, suffix, duration) {
+    const startTime = performance.now();
+
+    function step(now) {
+      const elapsed  = now - startTime;
+      const progress = Math.min(elapsed / duration, 1); /* Clamp 0–1 */
+
+      /* Ease-out cubic: starts fast, decelerates near end */
+      const eased   = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+
+      el.textContent = current + suffix;
+
+      /* Keep animating until progress reaches 1.0 (100% done) */
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  /*
+   * TRIGGER COUNTER ANIMATIONS
+   * Use IntersectionObserver to only start counting when
+   * the stats section actually enters the user's viewport.
+   * This prevents wasted animation on page load if the
+   * section is far below the fold.
+   */
+  const statsWrapper = document.querySelector('.stats-section-wrapper');
+
+  const counterObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+
+      /* Only run when section becomes visible */
+      if (!entry.isIntersecting) return;
+
+      /* Find all stat value elements that have a data-target */
+      const countEls = entry.target.querySelectorAll('[data-target]');
+
+      countEls.forEach(function(el) {
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        const suffix = el.getAttribute('data-suffix') || '';
+        animateCount(el, target, suffix, 1800); /* 1.8 second count-up */
+      });
+
+      /* Stop observing — animation should only run once */
+      counterObserver.unobserve(entry.target);
+    });
+
+  }, {
+    threshold: 0.25 /* Trigger when 25% of the section is visible */
+  });
+
+  /* Start observing the stats wrapper */
+  if (statsWrapper) {
+    counterObserver.observe(statsWrapper);
+  }
+
+})(); /* End of immediately invoked function */
 
   </script>
 
