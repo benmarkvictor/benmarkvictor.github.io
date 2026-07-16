@@ -692,12 +692,44 @@
     /* Individual credential/badge pill */
     .credential-badge {
       font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--color-text-secondary);
+      font-weight: 600;
       padding: 6px 14px;
       border: 1px solid var(--color-border);
       border-radius: var(--radius-full);
       background: var(--color-surface);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    /* Subtle glow lift on hover so the pill feels alive too */
+    .credential-badge:hover {
+      border-color: rgba(93, 202, 165, 0.5);
+      box-shadow: 0 6px 18px rgba(29, 158, 117, 0.18);
+    }
+
+    /* The animated credential text — a cyan / teal / lime shimmer,
+       kept visually distinct from the pink-gold name animation above */
+    .credential-badge__text {
+      display: inline-block;
+      background: linear-gradient(
+        90deg,
+        #33e0ff 0%,
+        #5dcaa5 25%,
+        #baff5c 50%,
+        #5dcaa5 75%,
+        #33e0ff 100%
+      );
+      background-size: 260% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: credentialShimmer 6s linear infinite;
+    }
+
+    /* Keyframe: sweeps the cyan/teal/lime gradient across each credential */
+    @keyframes credentialShimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: -260% center; }
     }
 
     /* --------------------------------------------------------
@@ -1778,11 +1810,9 @@
             qualifications, courses, and work experiences.
           -->
           <div class="about__credentials">
-            <span class="credential-badge"></span>
-            <span class="credential-badge">Data Analytics/  Data Scientist in Training @ CISCO NETWORKING ACADEMY </span>
-            <span class="credential-badge">Certified Data Analyst @ SKILLBOOST AFRICA </span>
-             <span class="credential-badge">Certified Data Analyst / Data Scientist @ Smart Hub academy </span>
-            <span class="credential-badge"></span>
+            <span class="credential-badge"><span class="credential-badge__text">Data Analytics / Data Scientist in Training @ CISCO NETWORKING ACADEMY</span></span>
+            <span class="credential-badge"><span class="credential-badge__text">Certified Data Analyst @ SKILLBOOST AFRICA</span></span>
+            <span class="credential-badge"><span class="credential-badge__text">Certified Data Analyst / Data Scientist @ Smart Hub Academy</span></span>
           </div>
 
         </div><!-- end .about__text -->
