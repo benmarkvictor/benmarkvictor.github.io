@@ -1891,7 +1891,7 @@
     HOW TO ADD YOUR OWN PROJECTS:
     1. Copy one complete .project-card block below
     2. Replace the image src, title, description, tools, and links
-    3. Change data-category to "healthcare" or "business" for filtering
+    3. Change data-category to "finance" or "business" for filtering
     4. Upload your dashboard screenshot to: assets/images/
   ============================================================ -->
   <section class="section" id="projects" aria-label="Selected Work">
@@ -1914,7 +1914,7 @@ showcasing end-to-end solutions with detailed documentation.
           "all" shows every card. Others match data-category on cards.
         -->
         <button class="filter-btn active" data-filter="all">All Work</button>
-        <button class="filter-btn" data-filter="healthcare">Finance</button>
+        <button class="filter-btn" data-filter="finance">Finance</button>
         <button class="filter-btn" data-filter="business">Business</button>
       </div>
 
@@ -1928,12 +1928,10 @@ showcasing end-to-end solutions with detailed documentation.
         ================================================ -->
 
         <!--
-          PROJECT CARD 1
-          data-category="healthcare" means this card shows
-          when the "Healthcare" filter button is clicked.
-          Change to "business" for business projects.
+          PROJECT CARD 1 — Pizza Sales
+          data-category="business" — shows under the "Business" filter
         -->
-        <article class="project-card" data-category="healthcare">
+        <article class="project-card" data-category="business">
 
           <!-- Project thumbnail image -->
           <div class="project-card__image-wrap">
@@ -1949,7 +1947,7 @@ showcasing end-to-end solutions with detailed documentation.
               loading="lazy"
             />
             <!-- Category tag overlaid on image -->
-            <span class="project-card__tag">Finance</span>
+            <span class="project-card__tag">Sales</span>
           </div>
 
           <!-- Card text content -->
@@ -2004,7 +2002,7 @@ showcasing end-to-end solutions with detailed documentation.
 
 
         <!-- ================================================
-          PROJECT CARD 2 — Business category
+          PROJECT CARD 2 — Superstore — Business category
           Add as many cards as you need by copying this block
         ================================================ -->
         <article class="project-card" data-category="business">
@@ -2041,9 +2039,9 @@ showcasing end-to-end solutions with detailed documentation.
 
 
         <!-- ================================================
-          PROJECT CARD 3 — Healthcare category
+          PROJECT CARD 3 — Nigerian Telecom — Finance category
         ================================================ -->
-        <article class="project-card" data-category="Finance">
+        <article class="project-card" data-category="finance">
 
           <div class="project-card__image-wrap">
             <img
@@ -2077,12 +2075,9 @@ showcasing end-to-end solutions with detailed documentation.
 
 
          <!--
-          PROJECT CARD 4
-          data-category="healthcare" means this card shows
-          when the "Healthcare" filter button is clicked.
-          Change to "business" for business projects.
+          PROJECT CARD 4 — Bank Fraud — Finance category
         -->
-        <article class="project-card" data-category="Finance">
+        <article class="project-card" data-category="finance">
 
           <!-- Project thumbnail image -->
           <div class="project-card__image-wrap">
@@ -2149,7 +2144,7 @@ Nigerian Bank Fraud Detection Analysis Dashboard is a <b>Power BI</b> solution t
             </div>
 
           </div><!-- end .project-card__body -->
-        </article><!-- end project card 1 -->
+        </article><!-- end project card 4 -->
 
 
         
@@ -2157,7 +2152,7 @@ Nigerian Bank Fraud Detection Analysis Dashboard is a <b>Power BI</b> solution t
           =====================================================
           ADD MORE PROJECT CARDS HERE
           Copy any of the blocks above, change data-category
-          to  or "business", and fill in your info.
+          to "finance" or "business", and fill in your info.
           =====================================================
         -->
 
@@ -2400,7 +2395,7 @@ Nigerian Bank Fraud Detection Analysis Dashboard is a <b>Power BI</b> solution t
      * ============================================================
      * FUNCTION 1: PROJECT FILTER SYSTEM
      * ============================================================
-     * Purpose: When a filter button is clicked (All / Healthcare /
+     * Purpose: When a filter button is clicked (All / Finance /
      *          Business), show only the matching project cards
      *          and hide all others.
      *
@@ -2438,7 +2433,7 @@ Nigerian Bank Fraud Detection Analysis Dashboard is a <b>Power BI</b> solution t
           /*
            * data-filter is a custom HTML attribute we set on each button:
            * "all" = show everything
-           * "healthcare" = show only cards with data-category="healthcare"
+           * "finance" = show only cards with data-category="finance"
            * "business" = show only cards with data-category="business"
            */
 
