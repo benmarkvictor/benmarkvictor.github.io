@@ -654,6 +654,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color:var(--ink);
 }
 .order-btn:hover{ color:var(--brass); }
+
+/* Photo placed BENEATH the price/WhatsApp row on each catalog card
+   (same cover-fit + hover-zoom treatment as the Collection photos
+   above). EDIT: swap the img src in the HTML to change any photo —
+   see the "catalog-photo" blocks in the Order & Payment section. */
+.catalog-photo{
+  margin-top:4px;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+.catalog-photo img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform .6s ease;
+}
+.catalog-card:hover .catalog-photo img{ transform:scale(1.05); }
+
 .payment-note{
   margin-top:44px;
   border:1px solid var(--line);
@@ -1367,9 +1384,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   </div>
 
   <!-- EDIT: keep these in sync with the Collection cards above if
-       you rename/reprice a piece — the two sections are independent
-       markup, on purpose, so you can offer a smaller made-to-order
-       subset without touching the full lookbook. -->
+       you rename/reprice/re-photograph a piece — the two sections
+       are independent markup, on purpose, so you can offer a
+       smaller made-to-order subset without touching the full
+       lookbook. Each card now carries its own photo beneath the
+       WhatsApp link (see .catalog-photo), just like the Collection
+       cards do above their write-up. -->
   <div class="catalog-grid">
     <div class="catalog-card">
       <div class="tag">Evening</div>
@@ -1379,6 +1399,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <span class="price">₦185,000</span>
         <a href="#" class="order-btn js-whatsapp-order" data-item="The Bow-Tie Sheath (₦185,000)">Order on WhatsApp →</a>
       </div>
+      <!-- Photo beneath the WhatsApp link — EDIT: swap images/imgNN.jpg
+           to change it, or delete this whole .catalog-photo div to
+           go back to a text-only card. -->
+      <div class="catalog-photo"><img src="images/img03.jpg" alt="The Bow-Tie Sheath, full length"></div>
     </div>
     <div class="catalog-card">
       <div class="tag">Ready-to-Wear</div>
@@ -1388,6 +1412,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <span class="price">₦138,000</span>
         <a href="#" class="order-btn js-whatsapp-order" data-item="Fringe Crop Jacket &amp; Skirt Set (₦138,000)">Order on WhatsApp →</a>
       </div>
+      <div class="catalog-photo"><img src="images/img07.jpg" alt="Fringe Crop Jacket &amp; Skirt Set, seated"></div>
     </div>
     <div class="catalog-card">
       <div class="tag">Evening</div>
@@ -1397,6 +1422,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <span class="price">₦164,000</span>
         <a href="#" class="order-btn js-whatsapp-order" data-item="The Magenta Peplum Dress (₦164,000)">Order on WhatsApp →</a>
       </div>
+      <div class="catalog-photo"><img src="images/img17.jpg" alt="The Magenta Peplum Dress, portrait"></div>
     </div>
   </div>
 
