@@ -472,10 +472,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .product-card:hover .product-photo::after{ opacity:0.06; }
 .product-card:hover .product-photo{ transform:scale(1.015); }
 
-.product-info{ padding:0 4px; display:flex; justify-content:space-between; gap:12px; }
+.product-info{ padding:0 4px; display:flex; flex-direction:column; gap:10px; }
 .product-name{ font-family:var(--font-display); font-size:18px; margin-bottom:4px; }
 .product-cat{ font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--grey); }
 .product-price{ font-family:var(--font-mono); font-size:14px; white-space:nowrap; }
+/* Price + "Order on WhatsApp" row — same look as the catalog cards
+   further down the page (dashed top border, price left, link right). */
+.product-order-row{
+  display:flex; justify-content:space-between; align-items:center;
+  padding-top:10px; border-top:1px dashed var(--line);
+}
 
 @media (max-width: 960px){ .product-grid{ grid-template-columns:repeat(2,1fr); } }
 @media (max-width: 600px){ .product-grid{ grid-template-columns:1fr; } }
@@ -639,12 +645,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .catalog-card .desc{ color:var(--grey); font-size:14px; }
 .catalog-card .price-row{ display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:10px; border-top:1px dashed var(--line); }
 .catalog-card .price{ font-family:var(--font-mono); font-size:16px; }
-.catalog-card .order-btn{
+/* .order-btn is shared by the Catalog cards AND the Collection
+   product cards (see .product-order-row above) — style it once here
+   so "Order on WhatsApp" looks identical in both places. */
+.order-btn{
   font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
   display:flex; align-items:center; gap:8px;
   color:var(--ink);
 }
-.catalog-card .order-btn:hover{ color:var(--brass); }
+.order-btn:hover{ color:var(--brass); }
 .payment-note{
   margin-top:44px;
   border:1px solid var(--line);
@@ -1146,48 +1155,66 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     <div class="product-card" data-category="evening">
       <div class="product-photo"><img src="images/img04.jpg" alt="Peach bow-detail gown"></div>
       <div class="product-info">
-        <div><div class="product-name">The Bow-Tie Sheath</div><div class="product-cat">Evening</div></div>
-        <div class="product-price">₦185,000</div>
+        <div class="product-top-row"><div><div class="product-name">The Bow-Tie Sheath</div><div class="product-cat">Evening</div></div></div>
+        <div class="product-order-row">
+          <span class="product-price">₦185,000</span>
+          <a href="#" class="order-btn js-whatsapp-order" data-item="The Bow-Tie Sheath (₦185,000)">Order on WhatsApp →</a>
+        </div>
       </div>
     </div>
 
     <div class="product-card" data-category="rtw">
       <div class="product-photo"><img src="images/img05.jpg" alt="Terracotta two-tone column dress"></div>
       <div class="product-info">
-        <div><div class="product-name">Terracotta Column Dress</div><div class="product-cat">Ready-to-Wear</div></div>
-        <div class="product-price">₦96,000</div>
+        <div class="product-top-row"><div><div class="product-name">Terracotta Column Dress</div><div class="product-cat">Ready-to-Wear</div></div></div>
+        <div class="product-order-row">
+          <span class="product-price">₦96,000</span>
+          <a href="#" class="order-btn js-whatsapp-order" data-item="Terracotta Column Dress (₦96,000)">Order on WhatsApp →</a>
+        </div>
       </div>
     </div>
 
     <div class="product-card" data-category="rtw">
       <div class="product-photo"><img src="images/img08.jpg" alt="Orange fringe crop jacket with striped skirt"></div>
       <div class="product-info">
-        <div><div class="product-name">Fringe Crop Jacket &amp; Skirt Set</div><div class="product-cat">Ready-to-Wear</div></div>
-        <div class="product-price">₦138,000</div>
+        <div class="product-top-row"><div><div class="product-name">Fringe Crop Jacket &amp; Skirt Set</div><div class="product-cat">Ready-to-Wear</div></div></div>
+        <div class="product-order-row">
+          <span class="product-price">₦138,000</span>
+          <a href="#" class="order-btn js-whatsapp-order" data-item="Fringe Crop Jacket &amp; Skirt Set (₦138,000)">Order on WhatsApp →</a>
+        </div>
       </div>
     </div>
 
     <div class="product-card" data-category="rtw">
       <div class="product-photo"><img src="images/img12.jpg" alt="Houndstooth fringed dress"></div>
       <div class="product-info">
-        <div><div class="product-name">Houndstooth Fringe Dress</div><div class="product-cat">Ready-to-Wear</div></div>
-        <div class="product-price">₦112,000</div>
+        <div class="product-top-row"><div><div class="product-name">Houndstooth Fringe Dress</div><div class="product-cat">Ready-to-Wear</div></div></div>
+        <div class="product-order-row">
+          <span class="product-price">₦112,000</span>
+          <a href="#" class="order-btn js-whatsapp-order" data-item="Houndstooth Fringe Dress (₦112,000)">Order on WhatsApp →</a>
+        </div>
       </div>
     </div>
 
     <div class="product-card" data-category="evening">
       <div class="product-photo"><img src="images/img16.jpg" alt="Magenta bow peplum dress"></div>
       <div class="product-info">
-        <div><div class="product-name">The Magenta Peplum Dress</div><div class="product-cat">Evening</div></div>
-        <div class="product-price">₦164,000</div>
+        <div class="product-top-row"><div><div class="product-name">The Magenta Peplum Dress</div><div class="product-cat">Evening</div></div></div>
+        <div class="product-order-row">
+          <span class="product-price">₦164,000</span>
+          <a href="#" class="order-btn js-whatsapp-order" data-item="The Magenta Peplum Dress (₦164,000)">Order on WhatsApp →</a>
+        </div>
       </div>
     </div>
 
     <div class="product-card" data-category="accessories">
       <div class="product-photo"><img src="images/img18.jpg" alt="Hand-tied bow trim detail"></div>
       <div class="product-info">
-        <div><div class="product-name">Hand-Tied Bow Trim</div><div class="product-cat">Accessories</div></div>
-        <div class="product-price">₦14,000</div>
+        <div class="product-top-row"><div><div class="product-name">Hand-Tied Bow Trim</div><div class="product-cat">Accessories</div></div></div>
+        <div class="product-order-row">
+          <span class="product-price">₦14,000</span>
+          <a href="#" class="order-btn js-whatsapp-order" data-item="Hand-Tied Bow Trim (₦14,000)">Order on WhatsApp →</a>
+        </div>
       </div>
     </div>
 
