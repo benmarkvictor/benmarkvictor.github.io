@@ -166,18 +166,47 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding:14px var(--edge);
   border-bottom-color:var(--line);
 }
+/* Animated wordmark: a multi-colour gradient sweeps continuously
+   across the brand name using background-clip:text.
+   EDIT: change the colours in the gradient below to any hex values;
+   change `8s` in the animation line to speed up/slow down the sweep. */
 .logo{
   font-family:var(--font-display);
   font-size:22px;
   letter-spacing:0.02em; /* EDIT: tightened slightly to fit the longer brand name */
-  color:var(--ink);
   white-space:nowrap;
+  background:linear-gradient(90deg,
+    var(--brass)      0%,
+    #E4572E           16%,   /* terracotta */
+    var(--wine)       32%,   /* deep wine */
+    #D6336C           48%,   /* magenta */
+    var(--brass-soft) 64%,   /* pale brass */
+    #E4572E           80%,   /* terracotta again */
+    var(--brass)      100%
+  );
+  background-size:300% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:logo-color-cycle 8s linear infinite;
+}
+@keyframes logo-color-cycle{
+  0%{ background-position:0% 50%; }
+  100%{ background-position:300% 50%; }
 }
 /* EDIT: shrink the wordmark on narrow screens so "PEACEFUL HAUTECOUTURE" fits on one line */
 @media (max-width: 480px){
-  .logo{ font-size:16px; }
+  .logo{ font-size:15px; }
 }
-.logo em{ font-style:italic; color:var(--brass); }
+
+/* Wrapper for everything on the right side of the header: the nav
+   menu, the round logo badge, and (on mobile) the hamburger button —
+   all pinned together in the top-right corner. */
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
 
 .nav-links{ display:flex; gap:34px; align-items:center; }
 .nav-links a{
@@ -207,6 +236,32 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .nav-cta:hover{ background:var(--ink); color:var(--bone); }
 
+/* BRAND LOGO BADGE — the real logo photo, always visible in the
+   top-right corner (the header is position:fixed, so this stays
+   put as the person scrolls). White circular frame with a thin
+   brass ring so it reads clearly over both the dark hero photo and
+   the lighter sections further down the page.
+   EDIT: change `width`/`height` below to resize the badge. */
+.brand-mark{
+  flex:none;
+  width:46px; height:46px;
+  border-radius:50%;
+  background:var(--bone);
+  border:1px solid var(--brass-soft);
+  box-shadow:0 4px 14px rgba(0,0,0,0.25);
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  transition:transform .3s ease, border-color .3s ease;
+}
+.brand-mark:hover{ transform:scale(1.08); border-color:var(--brass); }
+.brand-mark img{
+  width:82%; height:82%;
+  object-fit:contain;
+}
+@media (max-width:480px){
+  .brand-mark{ width:38px; height:38px; }
+}
+
 .hamburger{
   display:none;
   flex-direction:column;
@@ -234,6 +289,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   }
   .nav-links.is-open{ transform:translateX(0); }
   .nav-links a, .nav-links .nav-cta{ color:var(--bone); border-color:var(--brass-soft); }
+  .header-right{ gap:14px; }
   .hamburger{ display:flex; }
 }
 
@@ -1015,20 +1071,36 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
      NAVIGATION — edit links/labels here
 ===================================================== -->
 <header class="site-header" id="siteHeader">
-  <a href="#top" class="logo">PEACEFUL <em>HAUTECOUTURE</em></a>
+  <!-- Animated wordmark — see .logo in the CSS for the color-cycling
+       gradient-text animation. EDIT the words directly here; the
+       animation applies automatically to whatever text is inside. -->
+  <a href="#top" class="logo">PEACEFUL HAUTECOUTURE</a>
 
-  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <!-- Everything on the right side of the header lives in this
+       wrapper: the menu, the round logo badge, then the hamburger
+       (mobile only) — always pinned to the top-right corner of
+       the page since the header itself is position:fixed. -->
+  <div class="header-right">
+    <nav class="nav-links" id="navLinks">
+      <a href="#collection">Collection</a>
+      <a href="#lookbook">Lookbook</a>
+      <a href="#atelier">Atelier</a>
+      <a href="#booking">Book a Fitting</a>
+      <a href="#contact">Contact</a>
+      <a href="#booking" class="nav-cta">Book Now</a>
+    </nav>
 
-  <nav class="nav-links" id="navLinks">
-    <a href="#collection">Collection</a>
-    <a href="#lookbook">Lookbook</a>
-    <a href="#atelier">Atelier</a>
-    <a href="#booking">Book a Fitting</a>
-    <a href="#contact">Contact</a>
-    <a href="#booking" class="nav-cta">Book Now</a>
-  </nav>
+    <!-- BRAND LOGO BADGE — top-right corner, on every page/screen size.
+         EDIT: replace images/logo.jpg with a new logo file any time;
+         it auto-scales to fit inside the round frame (object-fit:contain). -->
+    <a href="#top" class="brand-mark" aria-label="Peaceful Hautecouture — home">
+      <img src="images/logo.jpg" alt="Peaceful Hautecouture logo">
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
 <!-- =====================================================
@@ -1516,7 +1588,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 <footer class="site-footer">
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#top" class="logo">PEACEFUL <em>HAUTECOUTURE</em></a>
+      <a href="#top" class="logo">PEACEFUL HAUTECOUTURE</a>
       <p>A twelve-seat atelier making eveningwear, bridal, and ready-to-wear by hand in Port Harcourt.</p>
     </div>
     <div class="footer-col">
